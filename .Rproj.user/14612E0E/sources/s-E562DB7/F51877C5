@@ -2,18 +2,18 @@
     "collab_server" : "",
     "contents" : "",
     "created" : 1552345612640.000,
-    "dirty" : false,
+    "dirty" : true,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "4027477307",
+    "hash" : "0",
     "id" : "F51877C5",
     "lastKnownWriteTime" : 1555268694,
-    "last_content_update" : 1555269179949,
+    "last_content_update" : 1555271196716,
     "path" : "H:/land_use/permissible_use/use_dashboard/use_dashboard/app.R",
     "project_path" : "app.R",
     "properties" : {
-        "cursorPosition" : "292,0",
-        "scrollLine" : "273"
+        "cursorPosition" : "17,0",
+        "scrollLine" : "10"
     },
     "read_only" : false,
     "read_only_alternatives" : [

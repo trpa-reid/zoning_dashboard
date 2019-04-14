@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "2426543032",
     "id" : "C411E941",
-    "lastKnownWriteTime" : 1555269497,
-    "last_content_update" : 1555269984473,
+    "lastKnownWriteTime" : 1555270704,
+    "last_content_update" : 1555271191561,
     "path" : "H:/land_use/permissible_use/zoning_data_prep.Rmd",
     "project_path" : null,
     "properties" : {
-        "cursorPosition" : "228,40",
-        "scrollLine" : "218"
+        "cursorPosition" : "13,87",
+        "scrollLine" : "11"
     },
     "read_only" : false,
     "read_only_alternatives" : [

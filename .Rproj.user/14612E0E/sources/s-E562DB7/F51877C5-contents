@@ -11,17 +11,17 @@ library(lwgeom)
 library(shinyBS)
 
 # read in GIS
-gis1 <- geojson_read("zoning_gis.geojson", what="sp") %>%
+gis1 <- geojson_read("data/zoning_gis.geojson", what="sp") %>%
   st_as_sf() %>%
   st_transform(crs=4326)
 
 # read in table
-uses_final1 <- read.csv("zoning_tab.csv", stringsAsFactors = F) %>%
+uses_final1 <- read.csv("data/zoning_tab.csv", stringsAsFactors = F) %>%
   left_join(gis1, by="id") %>% data.frame() %>%
   select(id, plan_name.x, area_type, use1, use2, use3, use, plan_id, special_area_name, special_area_id, area_plan_name, plan_type, id_name) %>%
   rename(plan_name=plan_name.x)
 
-parcel <- st_read(".","parcels") %>%
+parcel <- st_read("data","parcels") %>%
   st_transform(crs=4326) %>%
   mutate(parcel_id=paste("01-0278", parcel_id,sep="-"))
 
