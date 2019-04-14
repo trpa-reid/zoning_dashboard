@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555269774723.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C411E941",
+    "lastKnownWriteTime" : 1555269497,
+    "last_content_update" : 1555269984473,
+    "path" : "H:/land_use/permissible_use/zoning_data_prep.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "228,40",
+        "scrollLine" : "218"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

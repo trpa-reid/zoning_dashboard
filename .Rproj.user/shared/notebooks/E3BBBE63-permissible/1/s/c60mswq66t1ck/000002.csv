@@ -1,0 +1,27 @@
+"0","shorezone_gis <- st_read(""H:/land_use/permissible_use/zoning.gdb"",""shorezone_tolerance"") %>%
+  st_transform(crs=4326)
+"
+"1","Reading layer `"
+"1","shorezone_tolerance"
+"1","' from data source `"
+"1","H:\land_use\permissible_use\zoning.gdb"
+"1","' using driver `"
+"1","OpenFileGDB"
+"1","'"
+"1","
+"
+"1","Simple feature collection with 134 features and 9 fields"
+"1","
+"
+"1","geometry type:  MULTIPOLYGON
+"
+"1","dimension:      XY
+"
+"1","bbox:           "
+"1","xmin: 745169.9 ymin: 4307403 xmax: 765631.3 ymax: 4348815"
+"1","
+"
+"1","epsg (SRID):    26910
+"
+"1","proj4string:    +proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+"

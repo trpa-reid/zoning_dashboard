@@ -1,0 +1,13 @@
+"0","ap_shore_gis <- st_join(st_buffer(st_transform(shorezone_gis,crs=4326),0), st_buffer(st_transform(gis_area_plan,crs=4326),0), largest=TRUE) %>%
+  filter(!is.na(id)) %>%
+  mutate(id=paste(id, DISTRICT, sep=""-"")) %>% data.frame() %>% select(-Shape)
+"
+"2","st_buffer does not correctly buffer longitude/latitude data"
+"2","dist is assumed to be in decimal degrees (arc_degrees).
+"
+"2","st_buffer does not correctly buffer longitude/latitude data"
+"2","dist is assumed to be in decimal degrees (arc_degrees).
+"
+"2","although coordinates are longitude/latitude, st_intersection assumes that they are planar
+"
+"2","attribute variables are assumed to be spatially constant throughout all geometries"

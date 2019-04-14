@@ -1,0 +1,77 @@
+---
+title: "Untitled"
+author: "Reid Haefer"
+date: "1/15/2019"
+output: html_document
+---
+
+
+```{r}
+library(pacman)
+p_load(sf, tidyverse)
+```
+
+# 2018 final dataset
+
+```{r}
+tree <- read_csv("annual reporting/2018/Tree Permit Activity.csv")
+
+tree18 <- tree %>%
+  mutate(OPEN_DATE=as.Date(OPEN_DATE, "%m/%d/%Y")) %>%
+  filter(OPEN_DATE >= "2018-01-01" & OPEN_DATE <= "2018-12-31") %>%
+  filter(PARCEL_NUMBER != "1318-26-101-011") %>% 
+  filter( !str_detect(B1_ALT_ID, ".*TMP.*")) %>%
+  filter(B1_CREATED_BY != "BBARR") %>%
+  filter(!Project_Description %in% c("This is a test", "this is a test of ACA", "Test" ))
+```
+
+# tree applications by reasons
+
+```{r}
+trees.applications <- tree18 %>% 
+   filter(B1_APPL_STATUS=="Approved") %>%
+   mutate(total_approved_apps=n()) %>%
+gather(category, checked, 6:11) %>%
+  mutate(checked=ifelse(is.na(checked), NA, category)) %>%
+   filter(!is.na(checked)) %>%
+  group_by(checked, total_approved_apps) %>%
+   summarise(application_reasons=n_distinct(B1_ALT_ID)) %>% 
+   mutate(percent_reasons_of_all_applications=application_reasons/total_approved_apps)
+```
+
+# trees removel approved by reasons
+ 
+```{r}
+trees.approved <- tree18 %>% 
+   filter(B1_APPL_STATUS=="Approved") %>%
+   mutate(total_trees_approved=sum(Tree_Total)) %>%
+  gather(category, checked, 6:11) %>%
+   mutate(checked=ifelse(is.na(checked), NA, category)) %>%
+   filter(!is.na(checked) ) %>%
+   group_by(checked, total_trees_approved) %>%
+   summarise(trees_approved_reasons=sum(Tree_Total)) %>% 
+   mutate(percent_trees_approved_of_requested=trees_approved_reasons/total_trees_approved)
+```
+
+# online applications
+```{r}
+online<-tree18 %>% 
+  mutate(online=ifelse(str_detect(B1_CREATED_BY,".*PUBLICUSER.*"), "Online", "Person")) %>%
+  group_by(online) %>%
+  tally() %>%
+  mutate(percent=n/sum(n))
+```
+
+# total applications received
+
+```{r}
+total_apps_received <- tree18 %>% summarise(total_apps=n_distinct(B1_ALT_ID))
+```
+
+# number of trees permitted for removal
+
+```{r}
+total_trees_permitted <- tree18 %>%filter(B1_APPL_STATUS=="Approved") %>%
+  summarise(total=sum(Tree_Total))
+```
+

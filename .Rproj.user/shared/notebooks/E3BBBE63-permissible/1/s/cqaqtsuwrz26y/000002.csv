@@ -1,0 +1,8 @@
+"0","shore_gis_pas<-st_join(st_buffer(shorezone_gis,0), st_buffer(gis_pas,0), largest=TRUE) %>%
+  filter(!is.na(id)) %>%
+  mutate(id=paste(id, DISTRICT, sep=""-""), plan_type=""Shorezone - Plan Area Statement"") %>%
+  select(id, plan_id, plan_name, special_area_name, special_area_id, area_plan_name, plan_type) %>%
+  filter(!id %in% c(""129-0-2"",""129-0-7""))
+"
+"2","attribute variables are assumed to be spatially constant throughout all geometries"
+"0",""

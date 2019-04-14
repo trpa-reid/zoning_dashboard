@@ -1,0 +1,623 @@
+library(shinydashboard)
+library(sf)
+library(tmap)
+library(shiny)
+library(tidyverse)
+library(stringr)
+library(plotly)
+library(xlsx)
+library(lubridate)
+library(rsconnect)
+library(leaflet)
+library(leaflet.extras)
+library(devtools)
+library(scales)
+library(shinyBS)
+library(htmltools)
+
+rsconnect::setAccountInfo(name='trpa-shiny-apps',
+                          token='09A3A7D1CD7F1C5D4DCEBA88978D7FB6',
+                          secret='Om0gzyAj4JjvZTX4CgYrQzoZWJdGzS54AicYzNas')
+
+
+############################################################### read in data
+setwd("H:/cumulative accounting/permit_dashboard/data")
+#report<-read.xlsx("Current Planning Report_April2018_Final.xlsx", sheetName="reid")
+#report<-read_csv("Current Planning Report_April2018_Final.csv")
+test<-read.xlsx("jun132018_30-120_Update_kk.xlsx", sheetName = "Raw Data")
+raw<-read.xlsx("Apr2018_30-120_Update.xlsx", sheetName = "Raw Data")
+#parcel <- st_read(dsn=".","parcel_master_5_11_18")
+#prcl <- st_transform(parcel, "+proj=longlat +datum=WGS84 +no_defs")
+parcel_history <- st_read(dsn=".","parcel_history")
+prcl_hist <- st_transform(parcel_history, "+proj=longlat +datum=WGS84 +no_defs")
+raw_pm<-prcl_hist %>% left_join(test, by=c("APN"="PARCEL_NUMBER")) 
+final <- raw_pm %>% filter(!is.na(B1_PER_CATEGORY)) %>%
+  mutate(month_open= month(OPEN_DATE), year_open=year(OPEN_DATE), mo_yr_open= paste(month_open, year_open,sep="-") )
+################################################################ modify data
+raw_clean <- test %>% 
+  mutate(month_open= month(OPEN_DATE), year_open=year(OPEN_DATE), 
+        # mo_yr_open= myd(paste(paste( month_open, year_open,sep="-"),"-01",sep="")),
+         mo_yr_open= paste(month_open, year_open,sep="-"),
+         CompletenessMet=as.character(CompletenessMet), 
+         CompletenessMet=ifelse(CompletenessMet=="1", "TRUE",
+                          ifelse(CompletenessMet=="0", "FALSE",CompletenessMet)),
+         CompletenessMet_binary=ifelse(CompletenessMet=="TRUE", 1,
+                                ifelse(CompletenessMet=="FALSE", 0, NA)),
+         Met.Review.Deadline_binary=ifelse(Met.Review.Deadline==1, 1,
+                                       ifelse(Met.Review.Deadline==0, 0, NA)))
+data<-raw_clean %>% group_by(mo_yr_open,B1_PER_CATEGORY, ASSIGNED) %>% summarise(total=n()) %>% 
+  mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")) %>% 
+  left_join(raw_clean %>% 
+              filter(CompletenessDone=="TRUE") %>%
+              group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+              summarise(total=n()) %>%
+              mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+  left_join(raw_clean %>% 
+              filter(CompletenessDone=="Withdrawn") %>%
+              group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+              summarise(total=n()) %>%
+              mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+  left_join(raw_clean %>% 
+            filter(CompletenessDone=="FALSE") %>%
+            group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+            summarise(total=n()) %>%
+            mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+  left_join(raw_clean %>% 
+            filter(Completeness.Review.Days !="Withdrawn" & CompletenessMet %in% c("TRUE", "FALSE")) %>%
+              mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+            group_by(mo_yr_open,B1_PER_CATEGORY) %>% 
+            summarise(total=mean(Completeness.Review.Days)) %>%
+            mutate(id=paste(mo_yr_open, B1_PER_CATEGORY,sep="-")), by="id") %>%
+left_join(raw_clean %>% 
+            filter(!Date.of.Issued  %in% c("Withdrawn", "Not Issued")) %>%
+            group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+            summarise(total=n()) %>%
+            mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+left_join(raw_clean %>% 
+            filter(Date.of.Issued == "Not Issued") %>%
+            group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+            summarise(total=n()) %>%
+            mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+left_join(raw_clean %>% 
+            filter(!Project.Review.Days %in% c("Withdrawn", "N/A")) %>% 
+            mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+            group_by(mo_yr_open, B1_PER_CATEGORY, ASSIGNED) %>% 
+            summarise(avg=mean(Project.Review.Days, na.rm=T)) %>%
+            mutate(id=paste(mo_yr_open, B1_PER_CATEGORY, ASSIGNED,sep="-")), by="id") %>%
+            select(c(1:5,9,13,17,20,24,28,32)) %>%
+            rename(total_apps=total.x, reviewed_for_complete=total.y, withdrawn=total.x.x ,
+                  complete_review_pend=total.y.y, avg_days_review_30=total.x.x.x , issued=total.y.y.y ,
+                  not_issued=total, avg_days_review_120=avg)
+theorder <- c("1-2017","2-2017","3-2017","4-2017","5-2017","6-2017","7-2017","8-2017","9-2017","10-2017","11-2017","12-2017", "1-2018","2-2018","3-2018","4-2018","5-2018","6-2018")
+data$mo_yr_open.x <- factor(data$mo_yr_open.x, levels=theorder)
+
+##################### dashboard code
+ui <- dashboardPage(skin="green",
+  dashboardHeader(title="TRPA - Permit Dashboard",titleWidth = 500),
+  dashboardSidebar(textOutput("sidebar"),
+                   tags$head(tags$style("#sidebar{color: white;
+                                 font-size: 15px;font-style: bold;}")),
+                   selectInput("drop_category", "Select Category of Application", 
+                               as.character(unique(data$B1_PER_CATEGORY.x)), multiple = T, selected=""),
+                   selectInput("drop_date", "Select Date of Application", 
+                               theorder, multiple = T, selected=""),
+                   selectInput("drop_planner", "Select Planner", 
+                               as.character(unique(data$ASSIGNED.x)), multiple = T, selected=""),
+                   checkboxInput("show_all_apps", "Show All Data Available", F),
+                   checkboxInput("show_all_cats", "Include all Categories", F),
+                   checkboxInput("show_all_dates", "Include all Dates", F),
+                   checkboxInput("show_all_planners", "Include all Planners", F)),
+dashboardBody(
+    fluidRow(
+      #box(valueBoxOutput("value1", width=12), width=2),
+      box(valueBoxOutput("num_apps", width=12), width=2),
+      #box(valueBoxOutput("value3", width=12), width=2),
+      box(valueBoxOutput("num_issued", width=12), width=2),
+      #box(valueBoxOutput("value5", width=12), width=2),
+      box(valueBoxOutput("percent_30", width=12), width=2),
+      box(valueBoxOutput("days_30", width=12), width=2),
+      box(valueBoxOutput("percent_120", width=12), width=2),
+      box(valueBoxOutput("days_120", width=12), width=2)),
+      box(plotlyOutput("plot2")),
+     box(leafletOutput("map1")),
+      bsTooltip(id = "num_apps", title = "The total number of permit applications submitted", placement = "bottom", trigger="hover"),
+      bsTooltip(id = "num_issued", title = "The total number of permits issued", placement = "bottom", trigger="hover"),
+      bsTooltip(id = "percent_30", title = "The percent of permit applications reviewed for completeness within 30 days", placement = "bottom", trigger="hover"),
+      bsTooltip(id = "days_30", title = "The average number of days for an application to be reviewed for completeness", placement = "bottom", trigger="hover"),
+      bsTooltip(id = "percent_120", title = "The percent of permit review decisions made within 120 days", placement = "bottom", trigger="hover"),
+      bsTooltip(id = "days_120", title = "The average number of days for an permit decision to be made", placement = "bottom", trigger="hover"),
+    bsTooltip(id = "drop_category", title = "Select the categories you wish to visualize. Or to see all categories, click the check box below", placement = "top", trigger="hover"),
+    bsTooltip(id = "drop_date", title = "Select the dates you wish to visualize. Or to see all dates, click the check box below", placement = "top", trigger="hover"),
+    bsTooltip(id = "drop_planner", title = "Select the review planners you wish to visualize. Or to see all planners, click the check box below", placement = "top", trigger="hover"),
+    bsTooltip(id = "show_all_apps", title = paste("Check this box to see all permit applications from", min(final$mo_yr_open),"to", max(final$mo_yr_open)), placement = "below", trigger="hover"),
+    bsTooltip(id = "show_all_cats", title = "Check this box to see all data for all categories", placement = "below", trigger="hover"),
+    bsTooltip(id = "show_all_dates", title = "Check this box to see all data for all dates", placement = "below", trigger="hover"),
+    bsTooltip(id = "show_all_planners", title = "Check this box to see all data for all planners", placement = "below", trigger="hover")
+      )
+    )
+server <- function(input, output) {
+  output$sidebar <- renderText("Toggle the filters below on or off to display and analyze data in the main panel on the right. You can display all of the data or choose combinations of different categories, dates, and planners.")
+ react15 <- reactive({
+   if (input$show_all_apps) 
+     final %>% leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white",popup = paste("ID:", final$B1_ALT_ID, "<br>","Category:", final$B1_PER_CATEGORY, "<br>","APN:", final$APN, "<br>",                                      "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike")  %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_cats & input$show_all_dates & input$show_all_planners) 
+     final %>% leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white",popup = paste("ID:", final$B1_ALT_ID, "<br>",                                                                       "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike")  %>% setView(-120.038358, 39.087255, zoom=10)
+  else if (input$show_all_cats & input$show_all_dates) 
+    final %>% filter(ASSIGNED %in% input$drop_planner) %>% 
+     leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white",popup = paste("ID:", final$B1_ALT_ID, "<br>",
+"Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike")  %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_cats & input$show_all_planners) 
+     final %>% filter(mo_yr_open %in% input$drop_date) %>% 
+     leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white",popup = paste("ID:", final$B1_ALT_ID, "<br>",                                                                                     "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike")  %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_dates & input$show_all_planners) 
+     final %>% filter(B1_PER_CATEGORY %in% input$drop_category) %>% 
+     leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white",popup = paste("ID:", final$B1_ALT_ID, "<br>",                                                                                     "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike")  %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_dates) 
+     final %>% filter(B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner) %>% 
+     leaflet() %>%addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white", popup = paste("ID:", final$B1_ALT_ID, "<br>",
+  "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike") %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_cats)
+     final %>% filter(mo_yr_open %in% input$drop_date & ASSIGNED %in% input$drop_planner) %>% 
+     leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white", popup = paste("ID:", final$B1_ALT_ID, "<br>",                                                                                      "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike") %>% setView(-120.038358, 39.087255, zoom=10)
+   else if (input$show_all_planners)
+     final %>% filter(mo_yr_open %in% input$drop_date & B1_PER_CATEGORY %in% input$drop_category) %>% 
+     leaflet() %>% addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white", popup = paste("ID:", final$B1_ALT_ID, "<br>",  "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike") %>% setView(-120.038358, 39.087255, zoom=10)
+   else final %>% filter(mo_yr_open %in% input$drop_date & B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner) %>% 
+     leaflet() %>%addCircleMarkers(fillOpacity=1,opacity=.5, weight=1, radius=5, fillColor = "#B60606",color="white", popup = paste("ID:", final$B1_ALT_ID, "<br>",                                                                                     "Category:", final$B1_PER_CATEGORY, "<br>",                                                                                   "APN:", final$APN, "<br>",                                                                                                    "Open Date:", final$OPEN_DATE)) %>% addProviderTiles("HikeBike.HikeBike") %>% setView(-120.038358, 39.087255, zoom=10)
+  })
+  output$map1 <- renderLeaflet({
+   react15()
+    })
+  react1<-reactive({
+    if (input$show_all_apps) data %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+   else if (input$show_all_dates & input$show_all_cats & input$show_all_planners) data %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if (input$show_all_dates & input$show_all_cats) data %>% filter(ASSIGNED.x %in% input$drop_planner) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if (input$show_all_dates & input$show_all_planners) data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if (input$show_all_cats & input$show_all_planners) data %>% filter(mo_yr_open.x %in% input$drop_date) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+   else if (input$show_all_dates) data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & ASSIGNED.x %in% input$drop_planner) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if (input$show_all_cats) data %>% filter(ASSIGNED.x %in% input$drop_planner & mo_yr_open.x %in% input$drop_date) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if (input$show_all_planners) data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date) %>% summarise (total=sum(total_apps, na.rm=T)) %>% select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date &
+                           ASSIGNED.x %in% input$drop_planner) %>% 
+      summarise (total=sum(total_apps, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+  })
+  output$num_apps <- renderValueBox({
+    valueBox(react1(),color="navy", "Number of Applications")
+    })
+  react11 <- reactive({
+    if (input$show_all_apps)
+    data %>% 
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T)) %>% pull(total)
+    else if (input$show_all_cats & input$show_all_dates & input$show_all_planners)
+      data %>% 
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T)) %>% pull(total)
+   else if (input$show_all_cats & input$show_all_dates)
+      data %>% filter(ASSIGNED.x %in% input$drop_planner) %>%
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T)) %>% pull(total)
+    else if (input$show_all_planners & input$show_all_dates)
+      data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category) %>%
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T)) %>% pull(total)
+    else if (input$show_all_planners & input$show_all_cats)
+      data %>% filter(mo_yr_open.x %in% input$drop_date) %>%
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T)) %>% pull(total)
+    else if (input$show_all_dates)
+    data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & ASSIGNED.x %in% input$drop_planner) %>% 
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>%  summarise(total=sum(total,na.rm=T))
+    else if(input$show_all_cats)
+    data %>% filter(B1_PER_CATEGORY.x %in% unique(B1_PER_CATEGORY.x) & mo_yr_open.x %in% input$drop_date) %>% 
+      summarise (total=sum(issued, na.rm=T)) %>% 
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else if(input$show_all_planners)
+      data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date) %>% 
+      summarise (total=sum(issued, na.rm=T)) %>% ungroup() %>%
+      select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+    else 
+      data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date & ASSIGNED.x %in% input$drop_planner) %>% summarise (total=sum(issued, na.rm=T)) %>% 
+               select(3) %>% ungroup() %>% summarise(total=sum(total,na.rm=T))
+  })
+  output$num_issued <- renderValueBox({
+    valueBox(react11(),color="navy", "Issued Permits")
+  })
+  react4 <- reactive({
+    if (input$show_all_dates & input$show_all_cats & input$show_all_planners) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total))$performance, na.rm=T) * 100,0),"%")
+  else if (input$show_all_apps) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total))$performance, na.rm=T) * 100,0),"%")
+  else if (input$show_all_dates & input$show_all_cats) 
+     paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                   group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                   summarise(total_cat=n()) %>%
+                                   mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                   group_by(id) %>%
+                                   mutate(total= sum(total_cat, na.rm=T)) %>%
+                                   filter(CompletenessMet=="TRUE") %>%
+                                   mutate(performance= total_cat/total) %>%
+  filter(ASSIGNED %in% input$drop_planner))$performance, na.rm=T) * 100,0),"%")
+    else if (input$show_all_planners & input$show_all_cats) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total) %>%
+                                    filter(mo_yr_open %in% input$drop_date))$performance, na.rm=T) * 100,0),"%")
+    else if (input$show_all_planners & input$show_all_dates) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total) %>%
+                                    filter(B1_PER_CATEGORY %in% input$drop_category))$performance, na.rm=T) * 100,0),"%")
+    else if (input$show_all_dates) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total) %>%
+                                    filter(B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner))$performance, na.rm=T) * 100,0),"%")
+    else if (input$show_all_planners) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total) %>%
+                                    filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date))$performance, na.rm=T) * 100,0),"%")
+    else if (input$show_all_cats) 
+      paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                    group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                    summarise(total_cat=n()) %>%
+                                    mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                    group_by(id) %>%
+                                    mutate(total= sum(total_cat, na.rm=T)) %>%
+                                    filter(CompletenessMet=="TRUE") %>%
+                                    mutate(performance= total_cat/total) %>%
+                                    filter(ASSIGNED %in% input$drop_planner & mo_yr_open %in% input$drop_date))$performance, na.rm=T) * 100,0),"%")
+    else paste(round(mean(data.frame(raw_clean %>% filter (CompletenessMet %in% c("TRUE", "FALSE")) %>% 
+                                      group_by(CompletenessMet, B1_PER_CATEGORY, mo_yr_open,ASSIGNED) %>%
+                                      summarise(total_cat=n()) %>%
+                                      mutate(id=paste(B1_PER_CATEGORY, mo_yr_open,ASSIGNED)) %>%
+                                      group_by(id) %>%
+                                      mutate(total= sum(total_cat, na.rm=T)) %>%
+                                      filter(CompletenessMet=="TRUE") %>%
+                                      mutate(performance= total_cat/total) %>%
+                                      filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date & ASSIGNED %in% input$drop_planner))$performance, na.rm=T) * 100,0),"%")
+  })
+  output$percent_30 <- renderValueBox({
+    valueBox(react4(),color="navy", "30-Day Completeness Performance")
+  })
+    react20 <- reactive({
+      if(input$show_all_apps)
+       ggplotly(ggplot(data %>% group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),
+                       aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") + scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if(input$show_all_planners & input$show_all_cats & input$show_all_dates)
+       ggplotly(ggplot(data %>% group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),
+          aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if(input$show_all_cats & input$show_all_dates)
+         ggplotly(ggplot(data %>% filter(ASSIGNED.x %in% input$drop_planner) %>% group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if(input$show_all_cats & input$show_all_planners)
+        ggplotly(ggplot(data %>% filter(mo_yr_open.x %in% input$drop_date) %>% group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if(input$show_all_planners & input$show_all_dates)
+       ggplotly(ggplot(data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category) %>% group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if (input$show_all_cats)
+         ggplotly(ggplot(data %>% filter(ASSIGNED.x %in% input$drop_planner & mo_yr_open.x %in% input$drop_date) %>%
+      group_by(B1_PER_CATEGORY.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(B1_PER_CATEGORY.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if (input$show_all_dates)
+        ggplotly(ggplot(data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & ASSIGNED.x %in% input$drop_planner) %>%
+            group_by(mo_yr_open.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(mo_yr_open.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "" , x = "\n")  +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else if (input$show_all_planners)
+        ggplotly(ggplot(data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date) %>%
+        group_by(ASSIGNED.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(ASSIGNED.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1, face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "" , x = "\n")  + 
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+      else
+        ggplotly(ggplot(data %>% filter(B1_PER_CATEGORY.x %in% input$drop_category & mo_yr_open.x %in% input$drop_date &
+      ASSIGNED.x %in% input$drop_planner) %>% group_by(mo_yr_open.x) %>% summarise(total_apps=sum(total_apps,na.rm=T)),aes(mo_yr_open.x, total_apps)) + geom_bar(stat="identity", fill="#2E9ACF") +
+        theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1 ,face="plain", color="black", size=8),
+              panel.background = element_rect(fill="#ECEDED", colour="black"),
+              panel.border=element_rect(fill=NA, colour="black", size=1)) +
+        labs(y = "", x = "\n") +
+        scale_y_continuous(expand=c(0,0))) %>% config(displayModeBar = F)
+    })
+    output$plot2 <- renderPlotly({
+      react20()
+    })
+  ####average number of days for completeness
+  react5 <- reactive({
+    if (input$show_all_cats & input$show_all_dates & input$show_all_planners) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+              mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+              summarise(review_days=mean(Completeness.Review.Days)))$review_days, na.rm=T),0)
+    else if (input$show_all_apps) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+            mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+                              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(review_days=mean(Completeness.Review.Days)))$review_days, na.rm=T),0)
+  else if (input$show_all_cats & input$show_all_dates) 
+     round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+            mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+            group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+            summarise(review_days=mean(Completeness.Review.Days)) %>%
+          filter(ASSIGNED %in% input$drop_planner))$review_days, na.rm=T),0)
+    else if (input$show_all_planners & input$show_all_dates) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+                mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+                              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(review_days=mean(Completeness.Review.Days)) %>%
+                              filter(B1_PER_CATEGORY %in% input$drop_category))$review_days, na.rm=T),0)
+    else if (input$show_all_planners & input$show_all_cats) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+                mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+                              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(review_days=mean(Completeness.Review.Days)) %>%
+                              filter(mo_yr_open %in% input$drop_date))$review_days, na.rm=T),0)
+    else if (input$show_all_dates) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+              mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+              summarise(review_days=mean(Completeness.Review.Days)) %>%
+              filter(B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner))$review_days, na.rm=T),0)
+    else if (input$show_all_planners) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+              mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+                              group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(review_days=mean(Completeness.Review.Days)) %>%
+            filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date))$review_days, na.rm=T),0)
+    else if (input$show_all_cats) 
+      round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+                  mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+                  group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                  summarise(review_days=mean(Completeness.Review.Days)) %>%
+                  filter(ASSIGNED %in% input$drop_planner & mo_yr_open %in% input$drop_date))$review_days, na.rm=T),0)
+        else  round(mean(data.frame(raw_clean %>% filter (CompletenessDone =="TRUE") %>%
+            mutate(Completeness.Review.Days=as.numeric(levels(Completeness.Review.Days))[Completeness.Review.Days]) %>%
+            group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+            summarise(review_days=mean(Completeness.Review.Days)) %>%
+            filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date & ASSIGNED %in% input$drop_planner))$review_days, na.rm=T),0)
+  })
+  output$days_30 <- renderValueBox({
+    valueBox(react5(),color="navy", "Average # of Days for Completeness Review")
+  })
+  ####120 project review performance
+  react7 <- reactive({
+    if (input$show_all_cats & input$show_all_dates & input$show_all_planners) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total))$performance) * 100,"%")
+    else if (input$show_all_apps) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total))$performance) * 100,"%")
+    else if (input$show_all_cats & input$show_all_dates) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(ASSIGNED %in% input$drop_planner))$performance) * 100,"%")
+    else if (input$show_all_planners & input$show_all_dates) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(B1_PER_CATEGORY %in% input$drop_category))$performance) * 100,"%")
+    else if (input$show_all_planners & input$show_all_cats) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(mo_yr_open %in% input$drop_date))$performance) * 100,"%")
+    else if (input$show_all_dates) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner))$performance) * 100,"%")
+    else if (input$show_all_planners) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date))$performance) * 100,"%")
+    else if (input$show_all_cats) 
+      paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                              group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                              summarise(total_cat=n()) %>%
+                              mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                              group_by(id) %>%
+                              mutate(total= sum(total_cat, na.rm=T)) %>%
+                              filter(Met.Review.Deadline==1) %>%
+                              mutate(performance= total_cat/total) %>%
+                              filter(ASSIGNED %in% input$drop_planner & mo_yr_open %in% input$drop_date))$performance) * 100,"%")
+    else paste(mean(data.frame(raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+                                 group_by(Met.Review.Deadline, B1_PER_CATEGORY, mo_yr_open, ASSIGNED) %>%
+                                 summarise(total_cat=n()) %>%
+                                 mutate(id=paste(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)) %>%
+                                 group_by(id) %>%
+                                 mutate(total= sum(total_cat,na.rm=T)) %>%
+                                 filter(Met.Review.Deadline==1) %>%
+                                 mutate(performance= total_cat/total) %>%
+                                 filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date & ASSIGNED %in% input$drop_planner))$performance) * 100,"%")
+  })
+  output$percent_120 <- renderValueBox({
+    valueBox(react7(),color="navy", "120 Day Project Review Performance")
+  })
+  ####average number of days for project review
+  react6 <- reactive({
+    if (input$show_all_apps) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame() %>%
+      select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+   else if (input$show_all_cats & input$show_all_dates & input$show_all_planners) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame() %>%
+      select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+  else if (input$show_all_dates) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0))  %>%
+      filter(B1_PER_CATEGORY %in% input$drop_category & ASSIGNED %in% input$drop_planner)%>%
+        mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+        group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+        summarise(review_days=mean(Project.Review.Days)) %>% data.frame() %>% select(4) %>%
+        summarise(total=mean(review_days,na.rm=T)) %>%
+        mutate(total=round(total,0))
+    else if (input$show_all_cats) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0))  %>%
+      filter(ASSIGNED %in% input$drop_planner &  
+               mo_yr_open %in% input$drop_date) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame() %>% select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+   else if (input$show_all_cats & input$show_all_dates) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0))%>%
+      filter(ASSIGNED %in% input$drop_planner) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame()  %>% select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+    else if (input$show_all_planners & input$show_all_dates) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+      filter(B1_PER_CATEGORY %in% input$drop_category) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame()  %>% select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+    else if (input$show_all_cats & input$show_all_planners) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+      filter(mo_yr_open %in% input$drop_date) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame()  %>% select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+    else if (input$show_all_planners) 
+      raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0))  %>%
+      filter(B1_PER_CATEGORY %in% input$drop_category & mo_yr_open %in% input$drop_date) %>%
+      mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+      group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+      summarise(review_days=mean(Project.Review.Days)) %>% data.frame() %>% select(4) %>%
+      summarise(total=mean(review_days,na.rm=T)) %>%
+      mutate(total=round(total,0))
+   else raw_clean %>% filter (Met.Review.Deadline %in% c(1, 0)) %>%
+      filter(B1_PER_CATEGORY %in% input$drop_category &  mo_yr_open %in% input$drop_date & ASSIGNED %in% input$drop_planner) %>%
+            mutate(Project.Review.Days=as.numeric(levels(Project.Review.Days))[Project.Review.Days]) %>%
+            group_by(B1_PER_CATEGORY, mo_yr_open, ASSIGNED)  %>%
+            summarise(review_days=mean(Project.Review.Days)) %>% data.frame()  %>% select(4) %>%
+            summarise(total=mean(review_days,na.rm=T)) %>%
+            mutate(total=round(total,0)) %>% pull(total)
+  })
+  output$days_120 <- renderValueBox({
+    valueBox(react6(),color="navy", "Average # of Days for Project Review")
+  })
+}
+shinyApp(ui = ui, server = server)
+

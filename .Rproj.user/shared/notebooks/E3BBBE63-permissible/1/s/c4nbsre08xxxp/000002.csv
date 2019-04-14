@@ -1,0 +1,6 @@
+"0","gis_pas<-st_difference(gis_pas, st_union(st_combine(shore_gis_pas)))"
+"2","although coordinates are longitude/latitude, st_difference assumes that they are planar
+"
+"2","Error in CPL_geos_op2(op, st_geometry(x), st_geometry(y)) : 
+  Evaluation error: TopologyException: Input geom 0 is invalid: Self-intersection at or near point -119.9347198623487 38.971759946391295 at -119.9347198623487 38.971759946391295.
+"

@@ -1,0 +1,12 @@
+name: use_dashboard
+title: use_dashboard
+username:
+account: trpa-shiny-apps
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 770991
+bundleId: 1995269
+url: https://trpa-shiny-apps.shinyapps.io/use_dashboard/
+when: 1554740530.48931
+asMultiple: FALSE
+asStatic: FALSE
