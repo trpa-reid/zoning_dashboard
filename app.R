@@ -32,7 +32,8 @@ shinyApp(
 ui <- dashboardPage(skin="black", 
   dashboardHeader(title="Zoning Dashboard",
                   titleWidth = 500),
-  dashboardSidebar(width=300,box(width=12,background="black",p("Select from the buttons below to analyze TRPA zoning data at different scales; a user can analyze zoning data by planning areas, parcels, region-wide, or upload your own shapefile for a specific area. All zoning areas are included except shorezones. This dashboard is under development is not currently an official source of TRPA data.")),
+  dashboardSidebar(width=300,box(width=12,background="black",p("Select from the buttons below to analyze TRPA zoning data at different scales; a user can analyze zoning data by planning areas, parcels, region-wide, or upload your own shapefile for a specific area. All zoning areas are included except shorezones. This dashboard is under development is not currently an official source of TRPA data."),
+a("The app code can be found on Github here.",href="https://github.com/trpa-reid/zoning_dashboard")),
       radioButtons(inputId = "input_type",label="Select Zoning Analysis Type",   choices=c("Planning Areas","Regional Land Use", "Parcels", "Upload Shapefile Boundary"),selected = character(0)), 
       #bsTooltip(id = "filemap", title = "Upload a shapefile to analyze a specific area", placement = "right", trigger="hover"),
       uiOutput("ui"),
@@ -355,3 +356,4 @@ output$uses2 <- renderValueBox({
  })
   }
 )
+
