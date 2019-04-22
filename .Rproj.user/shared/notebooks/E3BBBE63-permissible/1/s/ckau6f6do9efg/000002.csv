@@ -1,3 +1,0 @@
-"0","gis_pas<-st_difference(gis_pas, st_union(st_combine(shore_gis_pas)))
-"
-"2","attribute variables are assumed to be spatially constant throughout all geometries"

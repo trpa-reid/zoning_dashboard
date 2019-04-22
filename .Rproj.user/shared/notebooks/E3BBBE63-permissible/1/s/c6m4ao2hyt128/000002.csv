@@ -1,3 +1,0 @@
-"0","gis<-st_difference(gis, st_union(st_combine(martis)))
-"
-"2","attribute variables are assumed to be spatially constant throughout all geometries"

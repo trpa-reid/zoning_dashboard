@@ -11,14 +11,14 @@ p_load(tidyverse, readxl, sf, shiny, leaflet, shinydashboard, tmap, DT, rsconnec
 ```
 
 ```{r}
-shorezone_gis <- st_read("H:/land_use/permissible_use/zoning.gdb","shorezone_tolerance") %>%
+shorezone_gis <- st_read("zoning.gdb","shorezone_tolerance") %>%
   st_transform(crs=4326)
 ```
 
 # area plan data
 
 ```{r}
-area.plan<-read_excel("H:/land_use/permissible_use/Area Plan Use Table.xlsx", sheet="Sheet3", skip=2)
+area.plan<-read_excel("Area Plan Use Table.xlsx", sheet="Sheet3", skip=2)
 area_plan_tab<-area.plan %>% gather(area,use_clean,4:103) %>%
  separate(area, c("area_name", "sub_area_name"), sep="!") %>%
   separate(sub_area_name, c("name", "id"), sep="#") %>%
@@ -26,11 +26,11 @@ area_plan_tab<-area.plan %>% gather(area,use_clean,4:103) %>%
   mutate(area_type="Area Plan") %>%
   select(id, area_type, use1, use2,use3,use)
 
-area_gis <- st_read("H:/land_use/permissible_use/zoning.gdb","area_plans_gis")
-tvap_os <- st_read("H:/land_use/permissible_use/zoning.gdb","tvap_os") %>%
+area_gis <- st_read("zoning.gdb","area_plans_gis")
+tvap_os <- st_read("zoning.gdb","tvap_os") %>%
   mutate(id="Open Space-TC-OS", Local_Plan_Name="TAHOE VALLEY AREA PLAN") %>%
   select(id, Local_Plan_Name)
-special <- st_read("H:/land_use/permissible_use/zoning.gdb","special") %>%
+special <- st_read("zoning.gdb","special") %>%
   mutate(id=paste(SPECIAL_AREA_NAME, REGIONAL_LAND_USE, sep="-")) %>%
   select(id, PLAN_NAME) %>%
   rename(Local_Plan_Name=PLAN_NAME)
@@ -59,7 +59,7 @@ gis_area_plan <- rbind(final, special,tvap_os) %>% st_transform(crs=4326) %>%
 ## area plan shorezone
 
 ```{r}
-ap_shore_tab <- read_excel("H:/land_use/permissible_use/PCAP - Shorezone Use Table.xlsx", sheet="Sheet1") %>%
+ap_shore_tab <- read_excel("PCAP - Shorezone Use Table.xlsx", sheet="Sheet1") %>%
   gather(name, use, 2:58) %>%
   separate(name, c("name","id"), sep="!")
 
@@ -74,8 +74,8 @@ ap_shore_gis <- st_join(st_buffer(st_transform(shorezone_gis,crs=4326),0), st_bu
 
 ```{r}
 # gis
-pas_gis <- st_read("H:/land_use/permissible_use/zoning.gdb","zoning_local_plan_pas")
-pas_special <- st_read("H:/land_use/permissible_use/zoning.gdb","special_area_pas")
+pas_gis <- st_read("zoning.gdb","zoning_local_plan_pas")
+pas_special <- st_read("zoning.gdb","special_area_pas")
 pas_gis<-st_difference(pas_gis, st_union(st_combine(pas_special)))
 pas_special<-pas_special %>% select(PLAN_ID, SPECIAL_AREA_NAME, PLAN_NAME,SPECIAL_AREA) %>%
   rename(plan_id=PLAN_ID, local_plan=PLAN_NAME, special_area_name=SPECIAL_AREA_NAME, special_area_id=SPECIAL_AREA)
@@ -96,15 +96,15 @@ gis_pas<- rbind(pas_special, pas_gis) %>%
   st_transform(crs=4326)
 
 # spreadsheet
-sheet1<-read_excel("H:/land_use/permissible_use/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 1 - 58_clean")
+sheet1<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 1 - 58_clean")
 one <- sheet1 %>% gather(name, use, 4:108) %>%
  separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Plan Area Statement")
-sheet2<-read_excel("H:/land_use/permissible_use/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 59 - 111_clean")
+sheet2<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 59 - 111_clean")
 two <- sheet2 %>% gather(name, use, 4:118) %>%
 separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!") %>%
 mutate(area_type="Plan Area Statement")
-sheet3<-read_excel("H:/land_use/permissible_use/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 112 - 175_clean")
+sheet3<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 112 - 175_clean")
 three <- sheet3 %>% gather(name, use, 4:120) %>%
 separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!") %>%
 mutate(area_type="Plan Area Statement")
@@ -143,8 +143,8 @@ test<- szgis %>% left_join(sztab %>% distinct(id,tab), by="id")
 ## Community Plans
 ```{r}
 #gis
-cp_gis <- st_read("H:/land_use/permissible_use/zoning.gdb","cp_gis")
-cp_special <- st_read("H:/land_use/permissible_use/zoning.gdb","cp_special_gis") %>%
+cp_gis <- st_read("zoning.gdb","cp_gis")
+cp_special <- st_read("zoning.gdb","cp_special_gis") %>%
   select(PLAN_ID, SPECIAL_AREA_NAME, PLAN_NAME, SPECIAL_AREA) %>%
   mutate(id=paste(PLAN_ID, SPECIAL_AREA, sep="-"),
          SPECIAL_AREA=as.character(SPECIAL_AREA), SPECIAL_AREA_NAME=as.character(SPECIAL_AREA_NAME)) %>%
@@ -163,11 +163,11 @@ cp_gis_final<- rbind(cp_gis1, cp_special) %>%
   st_transform(crs=4326)
 
 #tabular
-cp_sheet1<-read_excel("H:/land_use/permissible_use/PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 001A-089B_clean")
+cp_sheet1<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 001A-089B_clean")
 cp_one <- cp_sheet1 %>% gather(name, use, 4:77) %>%
   separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Community Plan")
-cp_sheet2<-read_excel("H:/land_use/permissible_use/PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 091-125_clean")
+cp_sheet2<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 091-125_clean")
 cp_two <- cp_sheet2 %>% gather(name, use, 4:32) %>%
   separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Community Plan")
@@ -235,9 +235,9 @@ test<-zoning_gis %>% data.frame() %>%
   left_join(zoning_tab %>% distinct(id, data_type2), by="id")
 any(is.na(test$data_type2))
 
-write.csv(zoning_tab, "H:/land_use/permissible_use/use_dashboard/use_dashboard/zoning_tab.csv")
+write.csv(zoning_tab, file="zoning_tab.csv")
 
-geojson_write(zoning_gis, file="H:/land_use/permissible_use/use_dashboard/use_dashboard/zoning_gis.geojson")
+geojson_write(zoning_gis, file="zoning_gis.geojson")
 
 ```
 
