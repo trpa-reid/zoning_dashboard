@@ -16,7 +16,9 @@ library(shinycssloaders)
  # read in GIS
 gis1 <- geojson_read("zoning_gis.geojson", what="sp") %>%
   st_as_sf() %>%
-  st_transform(crs=4326)
+  st_transform(crs=4326) 
+gis1$acres <- st_area(gis1)
+gis1$acres<- round(units::set_units(gis1$acres, "acre"),1)
 
 # read in table
 uses_final1 <- read.csv("zoning_tab.csv", stringsAsFactors = F) %>%
@@ -107,21 +109,29 @@ server <- function(input, output) {
                  paste0(round((uses_final1 %>% 
                  filter(use3 %in% input$use_name) %>%
                  filter(use %in% c("Allowed","Special Use")) %>%
-                 summarise(number=n_distinct(plan_name)) %>% select(number) / n_distinct(uses_final1$plan_name)*100),1),"%"),
+                 summarise(number=n_distinct(id_name)) %>% select(number) / n_distinct(uses_final1$id_name)*100),1),"%"),
                subtitle= "% of all Planning Areas",
                color = "red")
     }else if(x() == "Regional Land Use" & x_button() == "Use Categories") {
       valueBox(value =
                  paste0(round((uses_final1 %>% 
-                                 filter(use1 %in% input$use_cat_name) %>%
+                                 filter(use2 %in% input$use_cat) %>%
                                  filter(use %in% c("Allowed","Special Use")) %>%
-                                 summarise(number=n_distinct(plan_name)) %>% select(number) / n_distinct(uses_final1$plan_name)*100),1),"%"),
+                                 summarise(number=n_distinct(id_name)) %>% select(number) / n_distinct(uses_final1$id_name)*100),1),"%"),
+               subtitle= "% of all Planning Areas",
+               color = "red")
+    }else if(x() == "Regional Land Use" & x_button() == "Use Groups") {
+      valueBox(value =
+                 paste0(round((uses_final1 %>% 
+                                 filter(use1 %in% input$use_group) %>%
+                                 filter(use %in% c("Allowed","Special Use")) %>%
+                                 summarise(number=n_distinct(id_name)) %>% select(number) / n_distinct(uses_final1$id_name)*100),1),"%"),
                subtitle= "% of all Planning Areas",
                color = "red")
     }else if(x() == "Regional Land Use") {
       valueBox(value =
                  paste0(round((uses_final1 %>% 
-                                 filter(use1 %in% input$use_cat_name) %>%
+                                 filter(use1 %in% input$use_group) %>%
                                  filter(use %in% c("Allowed","Special Use")) %>%
                                  summarise(number=n_distinct(plan_name)) %>% select(number) / n_distinct(uses_final1$plan_name)*100),1),"%"),
                subtitle= "% of all Planning Areas",
@@ -163,10 +173,18 @@ output$uses2 <- renderValueBox({
           summarise(number=n_distinct(plan_name)) %>% select(number),
        subtitle= "# of Planning Areas",
         color = "red")
-    } else if (x() == "Regional Land Use" & x_button()=="Use Categories") {
+    }else if (x() == "Regional Land Use" & x_button() =="Use Categories") {
       valueBox(value =
                  uses_final1 %>% 
-                 filter(use1 %in% input$use_cat_name) %>%
+                 filter(use2 %in% input$use_cat) %>%
+                 filter(use %in% c("Allowed","Special Use")) %>%
+                 summarise(number=n_distinct(plan_name)) %>% select(number),
+               subtitle= "# of Planning Areas",
+               color = "red")
+    } else if (x() == "Regional Land Use" & x_button()=="Use Groups") {
+      valueBox(value =
+                 uses_final1 %>% 
+                 filter(use1 %in% input$use_group) %>%
                  filter(use %in% c("Allowed","Special Use")) %>%
                  summarise(number=n_distinct(plan_name)) %>% select(number),
                subtitle= "# of Planning Areas",
@@ -215,24 +233,45 @@ output$uses2 <- renderValueBox({
           filter(use %in% c("Allowed","Special Use") & use3 %in% input$use_name) %>% 
           filter(!is.na(use3)) %>% 
           data.frame() %>%
-          select(plan_name, use3, use, plan_type) %>%
-          distinct(plan_name, use3, use, plan_type) %>%
-          group_by(plan_name, plan_type, use3) %>%
-          summarise(`Use Type`=paste(use, collapse = " & ")) %>% filter(!is.na(plan_name)),
+          select(id_name, use3, use, plan_type, id) %>%
+          distinct(id_name, use3, use, plan_type, id) %>%
+          group_by(id_name, plan_type, use3, id) %>%
+          summarise(`Use Type`=paste(use, collapse = " & ")) %>% 
+          filter(!is.na(id_name)) %>%
+          left_join(data.frame(gis1) %>% select(id,acres), by="id") %>%
+          select(-id),
         options=list(dom = 'Bfrtip',pageLength=5,buttons = c('csv','pdf')),
-        colnames = c("Area Name","Plan Type","Use Type","Allowed"),rownames=F)
-    } else if(x() == "Regional Land Use" & x_button () =="Use Categories"){
+        colnames = c("Area Name","Plan Type","Use Type","Allowed","Acres"),rownames=F)
+    } else if(x() == "Regional Land Use" & x_button() == "Use Categories"){
       datatable(extensions = 'Buttons',
                 uses_final1 %>% 
-                  filter(use %in% c("Allowed","Special Use") & use1 %in% input$use_cat_name) %>% 
+                  filter(use %in% c("Allowed","Special Use") & use2 %in% input$use_cat) %>% 
+                  filter(!is.na(use2)) %>% 
+                  data.frame() %>%
+                  select(id_name, use2, use, plan_type, id) %>%
+                  distinct(id_name, use2, use, plan_type, id) %>%
+                  group_by(id_name, plan_type, use2, id) %>%
+                  summarise(`Use Type`=paste(use, collapse = " & ")) %>% 
+                  filter(!is.na(id_name)) %>%
+                  left_join(data.frame(gis1) %>% select(id,acres), by="id") %>%
+                  select(-id),
+                options=list(dom = 'Bfrtip',pageLength=5,buttons = c('csv','pdf')),
+                colnames = c("Area Name","Plan Type","Use Type","Allowed","Acres"),rownames=F)
+      }else if(x() == "Regional Land Use" & x_button () =="Use Groups"){
+      datatable(extensions = 'Buttons',
+                uses_final1 %>% 
+                  filter(use %in% c("Allowed","Special Use") & use1 %in% input$use_group) %>% 
                   filter(!is.na(use1)) %>% 
                   data.frame() %>%
-                  select(plan_name, use1, use, plan_type) %>%
-                  distinct(plan_name, use1, use, plan_type) %>%
-                  group_by(plan_name, plan_type, use1) %>%
-                  summarise(`Use Type`=paste(use, collapse = " & ")) %>% filter(!is.na(plan_name)),
+                  select(id_name, use1, use, plan_type,id) %>%
+                  distinct(id_name, use1, use, plan_type,id) %>%
+                  group_by(id_name, plan_type, use1,id) %>%
+                  summarise(`Use Type`=paste(use, collapse = " & ")) %>% 
+                  filter(!is.na(id_name)) %>%
+                  left_join(data.frame(gis1) %>% select(id,acres), by="id") %>%
+                  select(-id),
                 options=list(dom = 'Bfrtip',pageLength=5,buttons = c('csv','pdf')),
-                colnames = c("Area Name","Plan Type","Use Type","Allowed"),rownames=F)
+                colnames = c("Area Name","Plan Type","Use Type","Allowed","Acres"),rownames=F)
     }   else {
       datatable(uses_final1 %>% filter(use=="test") %>% select(),rownames=F)
     }
@@ -281,10 +320,10 @@ output$uses2 <- renderValueBox({
        addLayersControl(
          baseGroups = c("Satellite","OSM",  "Toner Lite"),
          options = layersControlOptions(collapsed = FALSE))
-   } else if(x() == "Regional Land Use" & x_button() =="Use Categories"){
+   } else if(x() == "Regional Land Use" & x_button() =="Use Groups"){
      test9<-gis1 %>% left_join(
        uses_final1 %>% 
-         filter(use1 %in% input$use_cat_name & use %in% c("Allowed","Special Use")) %>% 
+         filter(use1 %in% input$use_group & use %in% c("Allowed","Special Use")) %>% 
          distinct(id) %>%
          mutate(tab="tab"), by="id") %>%
        filter(!is.na(tab))
@@ -304,7 +343,30 @@ output$uses2 <- renderValueBox({
        addLayersControl(
          baseGroups = c("Satellite","OSM",  "Toner Lite"),
          options = layersControlOptions(collapsed = FALSE))
-   }else if(x() == "Regional Land Use" & x_button() == "Specific Uses"){
+   } else if(x() == "Regional Land Use" & x_button() =="Use Categories"){
+     test9<-gis1 %>% left_join(
+       uses_final1 %>% 
+         filter(use2 %in% input$use_cat & use %in% c("Allowed","Special Use")) %>% 
+         distinct(id) %>%
+         mutate(tab="tab"), by="id") %>%
+       filter(!is.na(tab))
+     leaflet(test9) %>%
+       addPolygons(weight=1, fillOpacity=0.5, fillColor="red", color="white", popup=paste0(test9$id_name),
+                   highlight = highlightOptions(
+                     weight = 3,
+                     fillOpacity = 0.5,
+                     color = "black",
+                     fillColor = "00C6F0",
+                     opacity = 1.0,
+                     bringToFront = TRUE,
+                     sendToBack = TRUE)) %>% 
+       addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+       addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") %>%
+       addProviderTiles(providers$OpenStreetMap.Mapnik, group = "OSM") %>%
+       addLayersControl(
+         baseGroups = c("Satellite","OSM",  "Toner Lite"),
+         options = layersControlOptions(collapsed = FALSE))
+   } else if(x() == "Regional Land Use" & x_button() == "Specific Uses"){
      test<-gis1 %>% left_join(
        uses_final1 %>% 
          filter(use3 %in% input$use_name & use %in% c("Allowed","Special Use")) %>% 
@@ -339,7 +401,7 @@ output$uses2 <- renderValueBox({
             "Upload Shapefile Boundary" = fileInput(inputId = "filemap", label = "Select Shapefile",
                                                     multiple = TRUE, accept = c('.shp','.dbf','.sbn','.sbx','.shx','.prj')),
             "Planning Areas" = selectInput(selected=" ",inputId = "area_name",label="Select Planning Area:", multiple=T,  choices=sort(as.vector(c(unique(as.character(gis1$id_name))," ")))),
-            "Regional Land Use" = radioButtons(inputId = "use_button",label="Select Use Type",   choices=c("Use Categories","Specific Uses"),selected = character(0)),
+            "Regional Land Use" = radioButtons(inputId = "use_button",label="Select Level of Analysis",   choices=c("Specific Uses", "Use Categories","Use Groups"),selected = character(0)),
             "Parcels" = selectInput(selected=" ",inputId = "parcel_name",label="Select Parcel:", multiple=T,  choices=sort(as.vector(c(unique(parcel$parcel_id)," ")))))
     }
   })
@@ -351,7 +413,8 @@ output$uses2 <- renderValueBox({
    }else {
      switch(input$use_button,
  "Specific Uses"=selectInput(selected=" ",inputId = "use_name",label="Select Zoning Use:", multiple=T,  choices=sort(as.vector(c(unique(uses_final1$use3)," ")))),
- "Use Categories"=selectInput(selected=" ",inputId = "use_cat_name",label="Select Zoning Use Category:", multiple=T,  choices=sort(as.vector(c(unique(uses_final1$use1)," ")))))
+ "Use Groups"=selectInput(selected=" ",inputId = "use_group",label="Select Zoning Use Group:", multiple=T,  choices=sort(as.vector(c(unique(uses_final1$use1)," ")))),
+ "Use Categories"=selectInput(selected=" ",inputId = "use_cat",label="Select Zoning Use Category:", multiple=T,  choices=sort(as.vector(c(unique(uses_final1$use2)," ")))))
    }
  })
   }

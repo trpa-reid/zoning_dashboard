@@ -18,7 +18,7 @@ shorezone_gis <- st_read("zoning.gdb","shorezone_tolerance") %>%
 # area plan data
 
 ```{r}
-area.plan<-read_excel("Area Plan Use Table.xlsx", sheet="Sheet3", skip=2)
+area.plan<-read_excel("data/Area Plan Use Table.xlsx", sheet="Sheet3", skip=2)
 area_plan_tab<-area.plan %>% gather(area,use_clean,4:103) %>%
  separate(area, c("area_name", "sub_area_name"), sep="!") %>%
   separate(sub_area_name, c("name", "id"), sep="#") %>%
@@ -59,7 +59,7 @@ gis_area_plan <- rbind(final, special,tvap_os) %>% st_transform(crs=4326) %>%
 ## area plan shorezone
 
 ```{r}
-ap_shore_tab <- read_excel("PCAP - Shorezone Use Table.xlsx", sheet="Sheet1") %>%
+ap_shore_tab <- read_excel("data/PCAP - Shorezone Use Table.xlsx", sheet="Sheet1") %>%
   gather(name, use, 2:58) %>%
   separate(name, c("name","id"), sep="!")
 
@@ -96,15 +96,15 @@ gis_pas<- rbind(pas_special, pas_gis) %>%
   st_transform(crs=4326)
 
 # spreadsheet
-sheet1<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 1 - 58_clean")
+sheet1<-read_excel("data/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 1 - 58_clean")
 one <- sheet1 %>% gather(name, use, 4:108) %>%
  separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Plan Area Statement")
-sheet2<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 59 - 111_clean")
+sheet2<-read_excel("data/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 59 - 111_clean")
 two <- sheet2 %>% gather(name, use, 4:118) %>%
 separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!") %>%
 mutate(area_type="Plan Area Statement")
-sheet3<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 112 - 175_clean")
+sheet3<-read_excel("data/PAS Matrix 10_16_02Expand_clean.xls", sheet="PAS 112 - 175_clean")
 three <- sheet3 %>% gather(name, use, 4:120) %>%
 separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!") %>%
 mutate(area_type="Plan Area Statement")
@@ -163,11 +163,11 @@ cp_gis_final<- rbind(cp_gis1, cp_special) %>%
   st_transform(crs=4326)
 
 #tabular
-cp_sheet1<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 001A-089B_clean")
+cp_sheet1<-read_excel("data/PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 001A-089B_clean")
 cp_one <- cp_sheet1 %>% gather(name, use, 4:77) %>%
   separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Community Plan")
-cp_sheet2<-read_excel("PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 091-125_clean")
+cp_sheet2<-read_excel("data/PAS Matrix 10_16_02Expand_clean.xls", sheet="CPs 091-125_clean")
 cp_two <- cp_sheet2 %>% gather(name, use, 4:32) %>%
   separate(name ,c("code","name" ,"special_area","shorezone_tolerance"), sep="!")%>%
  mutate(area_type="Community Plan")
@@ -227,7 +227,13 @@ zoning_gis <- rbind(gis_pas, st_transform(gis_area_plan, st_crs(gis_pas)),
                             use1 =="v. recreation" ~ "recreation",
                             use1 =="vi. resource management" ~ "resource management",
                             use1 =="vii. tolerance districts" ~ "tolerance districts",
-                            TRUE ~ as.character(use1)))
+                            TRUE ~ as.character(use1)),
+             use2=str_trim(stri_trans_totitle(gsub("^.*\\.","", use2 )),side="left"),
+             use2= case_when(use2 =="Tourist Accomodation" ~ "Tourist Accommodation",
+                            use2 =="Watershed Improvement" ~ "Watershed Improvements",
+                            use2 =="Os" ~ "Open Space",
+                            use2 =="Wholesale / Storage" ~ "Wholesale/Storage",
+                            TRUE ~ as.character(use2)))
                
 
 # are there any GIS areas that don't have zoning data? (TRUE=yes, FALSE=no) if TRUE then there's a problem
