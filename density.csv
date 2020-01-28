@@ -1,0 +1,1296 @@
+id,special_area_name,special_area_id,category,density
+032B-0,NA,NA,Single_Family_Density,1 unit per parcel
+045-0,NA,NA,Single_Family_Density,"NA"
+048-0,NA,NA,Single_Family_Density,1 unit per parcel
+054-0,NA,NA,Single_Family_Density,1 unit per parcel
+113-0,NA,NA,Single_Family_Density,1 unit per parcel
+032B-0,NA,NA,Multi_Family_Density,0
+045-0,NA,NA,Multi_Family_Density,15
+048-0,NA,NA,Multi_Family_Density,15
+054-0,NA,NA,Multi_Family_Density,15
+113-0,NA,NA,Multi_Family_Density,15
+032B-0,NA,NA,Tourist_Accommodation_Density,"NA"
+045-0,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+048-0,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+054-0,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+113-0,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+032B-0,NA,NA,Bed_Breakfast_Density,"NA"
+045-0,NA,NA,Bed_Breakfast_Density,5 units per acre
+048-0,NA,NA,Bed_Breakfast_Density,10 units per acre
+054-0,NA,NA,Bed_Breakfast_Density,10 units per acre
+113-0,NA,NA,Bed_Breakfast_Density,10 units per acre
+032B-0,NA,NA,Time_Share_Density,"NA"
+045-0,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+048-0,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+054-0,NA,NA,Time_Share_Density,40 units per acre if hotel-motel design
+113-0,NA,NA,Time_Share_Density,15 units per acre
+area_plan_1,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_2,NA,NA,Single_Family_Density,"NA"
+area_plan_3,NA,NA,Single_Family_Density,"NA"
+area_plan_4,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_5,NA,NA,Single_Family_Density,"NA"
+area_plan_6,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_7,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_8,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_9,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_10,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_11,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_12,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_13,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_14,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_15,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_16,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_17,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_18,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_19,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_20,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_21,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_22,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_23,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_24,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_25,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_26,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_27,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_28,NA,NA,Single_Family_Density,"NA"
+area_plan_29,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_30,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_31,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_32,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_33,NA,NA,Single_Family_Density,See Homewood Master Plan
+area_plan_34,NA,NA,Single_Family_Density,"NA"
+area_plan_35,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_36,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_37,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_38,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_39,LAKE FOREST COMMERCIAL SA #1-COM/PS,1,Single_Family_Density,NA
+area_plan_40,LAKE FOREST COMMERCIAL SA #2-COM/PS,2,Single_Family_Density,NA
+area_plan_41,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_42,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_43,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_44,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_45,NA,NA,Single_Family_Density,"NA"
+area_plan_46,MARTIS PEAK SA #1-CONS,1,Single_Family_Density,NA
+area_plan_47,NA,NA,Single_Family_Density,"NA"
+area_plan_48,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_49,NA,NA,Single_Family_Density,"NA"
+area_plan_50,NA,NA,Single_Family_Density,"Permitted if existing, no new"
+area_plan_51,NA,NA,Single_Family_Density,"Permitted if existing, no new"
+area_plan_52,NA,NA,Single_Family_Density,"Permitted if existing, no new"
+area_plan_53,NA,NA,Single_Family_Density,"Permitted if existing, no new"
+area_plan_54,NA,NA,Single_Family_Density,"Permitted if existing, no new"
+area_plan_55,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_56,NORTH TAHOE HIGH SCHOOL SA#1-REC,1,Single_Family_Density,NA
+area_plan_57,NA,NA,Single_Family_Density,"NA"
+area_plan_58,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_59,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_60,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_61,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_62,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_63,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_64,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_65,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_66,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_67,NA,NA,Single_Family_Density,"NA"
+area_plan_68,NA,NA,Single_Family_Density,"NA"
+area_plan_69,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_70,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_71,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_72,NA,NA,Single_Family_Density,"NA"
+area_plan_73,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_74,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_75,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_76,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_77,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_78,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_79,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_80,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_81,NA,NA,Single_Family_Density,"NA"
+area_plan_82,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_83,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_84,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_85,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_86,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_87,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_88,NA,NA,Single_Family_Density,NA
+area_plan_89,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_90,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_91,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_92,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_93,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_94,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_95,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_96,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_97,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_98,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_99,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_100,NA,NA,Single_Family_Density,1 unit per parcel
+area_plan_1,NA,NA,Multi_Family_Density,15
+area_plan_2,NA,NA,Multi_Family_Density,0
+area_plan_3,NA,NA,Multi_Family_Density,0
+area_plan_4,NA,NA,Multi_Family_Density,15
+area_plan_5,NA,NA,Multi_Family_Density,0
+area_plan_6,NA,NA,Multi_Family_Density,0
+area_plan_7,NA,NA,Multi_Family_Density,0
+area_plan_8,NA,NA,Multi_Family_Density,0
+area_plan_9,NA,NA,Multi_Family_Density,0
+area_plan_10,NA,NA,Multi_Family_Density,0
+area_plan_11,NA,NA,Multi_Family_Density,0
+area_plan_12,NA,NA,Multi_Family_Density,0
+area_plan_13,NA,NA,Multi_Family_Density,0
+area_plan_14,NA,NA,Multi_Family_Density,0
+area_plan_15,NA,NA,Multi_Family_Density,0
+area_plan_16,NA,NA,Multi_Family_Density,15
+area_plan_17,NA,NA,Multi_Family_Density,0
+area_plan_18,NA,NA,Multi_Family_Density,8
+area_plan_19,NA,NA,Multi_Family_Density,0
+area_plan_20,NA,NA,Multi_Family_Density,0
+area_plan_21,NA,NA,Multi_Family_Density,0
+area_plan_22,NA,NA,Multi_Family_Density,15
+area_plan_23,NA,NA,Multi_Family_Density,25
+area_plan_24,NA,NA,Multi_Family_Density,15
+area_plan_25,NA,NA,Multi_Family_Density,15
+area_plan_26,NA,NA,Multi_Family_Density,25
+area_plan_27,NA,NA,Multi_Family_Density,0
+area_plan_28,NA,NA,Multi_Family_Density,0
+area_plan_29,NA,NA,Multi_Family_Density,25
+area_plan_30,NA,NA,Multi_Family_Density,15
+area_plan_31,NA,NA,Multi_Family_Density,8
+area_plan_32,NA,NA,Multi_Family_Density,0
+area_plan_33,NA,NA,Multi_Family_Density,0
+area_plan_34,NA,NA,Multi_Family_Density,0
+area_plan_35,NA,NA,Multi_Family_Density,15
+area_plan_36,NA,NA,Multi_Family_Density,0
+area_plan_37,NA,NA,Multi_Family_Density,0
+area_plan_38,NA,NA,Multi_Family_Density,0
+area_plan_39,LAKE FOREST COMMERCIAL SA #1-COM/PS,1,Multi_Family_Density,NA
+area_plan_40,LAKE FOREST COMMERCIAL SA #2-COM/PS,2,Multi_Family_Density,NA
+area_plan_41,NA,NA,Multi_Family_Density,15
+area_plan_42,NA,NA,Multi_Family_Density,0
+area_plan_43,NA,NA,Multi_Family_Density,0
+area_plan_44,NA,NA,Multi_Family_Density,0
+area_plan_45,NA,NA,Multi_Family_Density,0
+area_plan_46,MARTIS PEAK SA #1-CONS,1,Multi_Family_Density,NA
+area_plan_47,NA,NA,Multi_Family_Density,0
+area_plan_48,NA,NA,Multi_Family_Density,0
+area_plan_49,NA,NA,Multi_Family_Density,0
+area_plan_50,NA,NA,Multi_Family_Density,25
+area_plan_51,NA,NA,Multi_Family_Density,25
+area_plan_52,NA,NA,Multi_Family_Density,25
+area_plan_53,NA,NA,Multi_Family_Density,15
+area_plan_54,NA,NA,Multi_Family_Density,25
+area_plan_55,NA,NA,Multi_Family_Density,0
+area_plan_56,NORTH TAHOE HIGH SCHOOL SA#1-REC,1,Multi_Family_Density,NA
+area_plan_57,NA,NA,Multi_Family_Density,0
+area_plan_58,NA,NA,Multi_Family_Density,15
+area_plan_59,NA,NA,Multi_Family_Density,15
+area_plan_60,NA,NA,Multi_Family_Density,15
+area_plan_61,NA,NA,Multi_Family_Density,15
+area_plan_62,NA,NA,Multi_Family_Density,15
+area_plan_63,NA,NA,Multi_Family_Density,0
+area_plan_64,NA,NA,Multi_Family_Density,0
+area_plan_65,NA,NA,Multi_Family_Density,8
+area_plan_66,NA,NA,Multi_Family_Density,0
+area_plan_67,NA,NA,Multi_Family_Density,0
+area_plan_68,NA,NA,Multi_Family_Density,15
+area_plan_69,NA,NA,Multi_Family_Density,0
+area_plan_70,NA,NA,Multi_Family_Density,0
+area_plan_71,NA,NA,Multi_Family_Density,0
+area_plan_72,NA,NA,Multi_Family_Density,0
+area_plan_73,NA,NA,Multi_Family_Density,15
+area_plan_74,NA,NA,Multi_Family_Density,0
+area_plan_75,NA,NA,Multi_Family_Density,8
+area_plan_76,NA,NA,Multi_Family_Density,8
+area_plan_77,NA,NA,Multi_Family_Density,0
+area_plan_78,NA,NA,Multi_Family_Density,8
+area_plan_79,NA,NA,Multi_Family_Density,0
+area_plan_80,NA,NA,Multi_Family_Density,0
+area_plan_81,NA,NA,Multi_Family_Density,0
+area_plan_82,NA,NA,Multi_Family_Density,0
+area_plan_83,NA,NA,Multi_Family_Density,25
+area_plan_84,NA,NA,Multi_Family_Density,15
+area_plan_85,NA,NA,Multi_Family_Density,25
+area_plan_86,NA,NA,Multi_Family_Density,25
+area_plan_87,NA,NA,Multi_Family_Density,25
+area_plan_88,NA,NA,Multi_Family_Density,NA
+area_plan_89,NA,NA,Multi_Family_Density,25
+area_plan_90,NA,NA,Multi_Family_Density,25
+area_plan_91,NA,NA,Multi_Family_Density,25
+area_plan_92,NA,NA,Multi_Family_Density,25
+area_plan_93,NA,NA,Multi_Family_Density,25
+area_plan_94,NA,NA,Multi_Family_Density,0
+area_plan_95,NA,NA,Multi_Family_Density,0
+area_plan_96,NA,NA,Multi_Family_Density,25
+area_plan_97,NA,NA,Multi_Family_Density,25
+area_plan_98,NA,NA,Multi_Family_Density,25
+area_plan_99,NA,NA,Multi_Family_Density,25
+area_plan_100,NA,NA,Multi_Family_Density,25
+area_plan_1,NA,NA,Tourist_Accommodation_Density,30 units per acre
+area_plan_2,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_3,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_4,NA,NA,Tourist_Accommodation_Density,30 units per acre - Only in Town Center portion
+area_plan_5,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_6,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_7,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_8,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_9,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_10,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_11,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_12,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_13,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_14,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_15,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_16,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_17,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_18,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_19,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_20,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_21,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_22,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_23,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_24,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_25,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_26,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_27,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_28,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_29,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_30,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_31,NA,NA,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+area_plan_32,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_33,NA,NA,Tourist_Accommodation_Density,See Homewood Master Plan
+area_plan_34,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_35,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_36,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_37,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_38,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_39,LAKE FOREST COMMERCIAL SA #1-COM/PS,1,Tourist_Accommodation_Density,NA
+area_plan_40,LAKE FOREST COMMERCIAL SA #2-COM/PS,2,Tourist_Accommodation_Density,NA
+area_plan_41,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_42,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_43,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_44,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_45,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_46,MARTIS PEAK SA #1-CONS,1,Tourist_Accommodation_Density,NA
+area_plan_47,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_48,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_49,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_50,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_51,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_52,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_53,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_54,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_55,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_56,NORTH TAHOE HIGH SCHOOL SA#1-REC,1,Tourist_Accommodation_Density,NA
+area_plan_57,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_58,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_59,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_60,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_61,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_62,NA,NA,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+area_plan_63,NA,NA,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+area_plan_64,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_65,NA,NA,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+area_plan_66,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_67,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_68,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_69,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_70,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_71,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_72,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_73,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_74,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_75,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_76,NA,NA,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+area_plan_77,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_78,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_79,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_80,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_81,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_82,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_83,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_84,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_85,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_86,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_87,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_88,NA,NA,Tourist_Accommodation_Density,NA
+area_plan_89,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_90,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_91,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_92,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_93,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_94,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_95,NA,NA,Tourist_Accommodation_Density,"NA"
+area_plan_96,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_97,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_98,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_99,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_100,NA,NA,Tourist_Accommodation_Density,40 units per acre
+area_plan_1,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_2,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_3,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_4,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_5,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_6,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_7,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_8,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_9,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_10,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_11,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_12,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_13,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_14,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_15,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_16,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_17,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_18,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_19,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_20,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_21,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_22,NA,NA,Bed_Breakfast_Density,Na
+area_plan_23,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_24,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_25,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_26,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_27,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_28,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_29,NA,NA,Bed_Breakfast_Density, 
+area_plan_30,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_31,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_32,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_33,NA,NA,Bed_Breakfast_Density,See Homewood Master Plan
+area_plan_34,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_35,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_36,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_37,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_38,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_39,LAKE FOREST COMMERCIAL SA #1-COM/PS,1,Bed_Breakfast_Density,NA
+area_plan_40,LAKE FOREST COMMERCIAL SA #2-COM/PS,2,Bed_Breakfast_Density,NA
+area_plan_41,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_42,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_43,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_44,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_45,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_46,MARTIS PEAK SA #1-CONS,1,Bed_Breakfast_Density,NA
+area_plan_47,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_48,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_49,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_50,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_51,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_52,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_53,NA,NA,Bed_Breakfast_Density,40 units per acre
+area_plan_54,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_55,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_56,NORTH TAHOE HIGH SCHOOL SA#1-REC,1,Bed_Breakfast_Density,NA
+area_plan_57,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_58,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_59,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_60,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_61,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_62,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_63,NA,NA,Bed_Breakfast_Density,8 units per acre
+area_plan_64,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_65,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_66,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_67,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_68,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_69,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_70,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_71,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_72,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_73,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_74,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_75,NA,NA,Bed_Breakfast_Density,8 units per acre
+area_plan_76,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_77,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_78,NA,NA,Bed_Breakfast_Density,8 units per acre
+area_plan_79,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_80,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_81,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_82,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_83,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_84,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_85,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_86,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_87,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_88,NA,NA,Bed_Breakfast_Density,NA
+area_plan_89,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_90,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_91,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_92,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_93,NA,NA,Bed_Breakfast_Density,10 units per acre
+area_plan_94,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_95,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_96,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_97,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_98,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_99,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_100,NA,NA,Bed_Breakfast_Density,"NA"
+area_plan_1,NA,NA,Time_Share_Density,"NA"
+area_plan_2,NA,NA,Time_Share_Density,"NA"
+area_plan_3,NA,NA,Time_Share_Density,"NA"
+area_plan_4,NA,NA,Time_Share_Density,"NA"
+area_plan_5,NA,NA,Time_Share_Density,"NA"
+area_plan_6,NA,NA,Time_Share_Density,"NA"
+area_plan_7,NA,NA,Time_Share_Density,"NA"
+area_plan_8,NA,NA,Time_Share_Density,"NA"
+area_plan_9,NA,NA,Time_Share_Density,"NA"
+area_plan_10,NA,NA,Time_Share_Density,"NA"
+area_plan_11,NA,NA,Time_Share_Density,"NA"
+area_plan_12,NA,NA,Time_Share_Density,"NA"
+area_plan_13,NA,NA,Time_Share_Density,"NA"
+area_plan_14,NA,NA,Time_Share_Density,"NA"
+area_plan_15,NA,NA,Time_Share_Density,"NA"
+area_plan_16,NA,NA,Time_Share_Density,"NA"
+area_plan_17,NA,NA,Time_Share_Density,"NA"
+area_plan_18,NA,NA,Time_Share_Density,"NA"
+area_plan_19,NA,NA,Time_Share_Density,"NA"
+area_plan_20,NA,NA,Time_Share_Density,"NA"
+area_plan_21,NA,NA,Time_Share_Density,"NA"
+area_plan_22,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_23,NA,NA,Time_Share_Density,15 units per acre
+area_plan_24,NA,NA,Time_Share_Density,"NA"
+area_plan_25,NA,NA,Time_Share_Density,"NA"
+area_plan_26,NA,NA,Time_Share_Density,40 units per acre
+area_plan_27,NA,NA,Time_Share_Density,"NA"
+area_plan_28,NA,NA,Time_Share_Density,"NA"
+area_plan_29,NA,NA,Time_Share_Density,40 units per acre
+area_plan_30,NA,NA,Time_Share_Density,"NA"
+area_plan_31,NA,NA,Time_Share_Density,20 units per acre if less than 10% have kitchens
+area_plan_32,NA,NA,Time_Share_Density,"NA"
+area_plan_33,NA,NA,Time_Share_Density,See Homewood Master Plan
+area_plan_34,NA,NA,Time_Share_Density,"NA"
+area_plan_35,NA,NA,Time_Share_Density,"NA"
+area_plan_36,NA,NA,Time_Share_Density,15 units per acre
+area_plan_37,NA,NA,Time_Share_Density,"NA"
+area_plan_38,NA,NA,Time_Share_Density,"NA"
+area_plan_39,LAKE FOREST COMMERCIAL SA #1-COM/PS,1,Time_Share_Density,NA
+area_plan_40,LAKE FOREST COMMERCIAL SA #2-COM/PS,2,Time_Share_Density,NA
+area_plan_41,NA,NA,Time_Share_Density,"NA"
+area_plan_42,NA,NA,Time_Share_Density,"NA"
+area_plan_43,NA,NA,Time_Share_Density,"NA"
+area_plan_44,NA,NA,Time_Share_Density,"NA"
+area_plan_45,NA,NA,Time_Share_Density,"NA"
+area_plan_46,MARTIS PEAK SA #1-CONS,1,Time_Share_Density,NA
+area_plan_47,NA,NA,Time_Share_Density,"NA"
+area_plan_48,NA,NA,Time_Share_Density,"NA"
+area_plan_49,NA,NA,Time_Share_Density,"NA"
+area_plan_50,NA,NA,Time_Share_Density,40 units per acre
+area_plan_51,NA,NA,Time_Share_Density,40 units per acre
+area_plan_52,NA,NA,Time_Share_Density,40 units per acre
+area_plan_53,NA,NA,Time_Share_Density,40 units per acre
+area_plan_54,NA,NA,Time_Share_Density,"NA"
+area_plan_55,NA,NA,Time_Share_Density,"NA"
+area_plan_56,NORTH TAHOE HIGH SCHOOL SA#1-REC,1,Time_Share_Density,NA
+area_plan_57,NA,NA,Time_Share_Density,"NA"
+area_plan_58,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_59,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_60,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_61,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_62,NA,NA,Time_Share_Density,40 units per acre if less than 10% have kitchens
+area_plan_63,NA,NA,Time_Share_Density,"NA"
+area_plan_64,NA,NA,Time_Share_Density,"NA"
+area_plan_65,NA,NA,Time_Share_Density,20 units per acre if less than 10% have kitchens
+area_plan_66,NA,NA,Time_Share_Density,"NA"
+area_plan_67,NA,NA,Time_Share_Density,"NA"
+area_plan_68,NA,NA,Time_Share_Density,"NA"
+area_plan_69,NA,NA,Time_Share_Density,"NA"
+area_plan_70,NA,NA,Time_Share_Density,"NA"
+area_plan_71,NA,NA,Time_Share_Density,"NA"
+area_plan_72,NA,NA,Time_Share_Density,"NA"
+area_plan_73,NA,NA,Time_Share_Density,"NA"
+area_plan_74,NA,NA,Time_Share_Density,"NA"
+area_plan_75,NA,NA,Time_Share_Density,"NA"
+area_plan_76,NA,NA,Time_Share_Density,20 units per acre if less than 10% have kitchens
+area_plan_77,NA,NA,Time_Share_Density,"NA"
+area_plan_78,NA,NA,Time_Share_Density,"NA"
+area_plan_79,NA,NA,Time_Share_Density,"NA"
+area_plan_80,NA,NA,Time_Share_Density,"NA"
+area_plan_81,NA,NA,Time_Share_Density,"NA"
+area_plan_82,NA,NA,Time_Share_Density,"NA"
+area_plan_83,NA,NA,Time_Share_Density,"NA"
+area_plan_84,NA,NA,Time_Share_Density,"NA"
+area_plan_85,NA,NA,Time_Share_Density,"NA"
+area_plan_86,NA,NA,Time_Share_Density,"NA"
+area_plan_87,NA,NA,Time_Share_Density,"NA"
+area_plan_88,NA,NA,Time_Share_Density,NA
+area_plan_89,NA,NA,Time_Share_Density,40 units per acre
+area_plan_90,NA,NA,Time_Share_Density,40 units per acre
+area_plan_91,NA,NA,Time_Share_Density,"NA"
+area_plan_92,NA,NA,Time_Share_Density,40 units per acre
+area_plan_93,NA,NA,Time_Share_Density,"NA"
+area_plan_94,NA,NA,Time_Share_Density,"NA"
+area_plan_95,NA,NA,Time_Share_Density,"NA"
+area_plan_96,NA,NA,Time_Share_Density,"NA"
+area_plan_97,NA,NA,Time_Share_Density,"NA"
+area_plan_98,NA,NA,Time_Share_Density,"NA"
+area_plan_99,NA,NA,Time_Share_Density,"NA"
+area_plan_100,NA,NA,Time_Share_Density,"NA"
+041-1,INCLINE VILLAGE #3,1,Single_Family_Density,NA
+044-1,FAIRWAY,1,Single_Family_Density,NA
+038-1,WOOD CREEK SA#1,1,Single_Family_Density,NA
+035-1,CRYSTAL BAY CONDOMINIUMS SA#1,1,Single_Family_Density,NA
+058-1,GLENBROOK,1,Single_Family_Density,NA
+060-1,GENOA PEAK SA#1,1,Single_Family_Density,NA
+061-1,LOGAN CREEK SA#1,1,Single_Family_Density,NA
+063-1,LINCOLN,1,Single_Family_Density,NA
+067-2,MARLA BAY/ZEPHYR HEIGHTS,2,Single_Family_Density,NA
+067-1,MARLA BAY/ZEPHYR HEIGHTS,1,Single_Family_Density,NA
+080-1,KINGSBURY DRAINAGE SA#1,1,Single_Family_Density,NA
+073-1,LAKE VILLAGE SA#1,1,Single_Family_Density,NA
+093-1,BIJOU,1,Single_Family_Density,NA
+099-1,AL TAHOE SA#1,1,Single_Family_Density,NA
+097-1,BIJOU PINES SA#1,1,Single_Family_Density,NA
+175-1,CASCADE PROPERTIES SA#1,1,Single_Family_Density,NA
+085-1,LAKE VIEW HEIGHTS SA#1,1,Single_Family_Density,NA
+094-1,GLENWOOD SA#1,1,Single_Family_Density,NA
+102-2,TAHOE KEYS SA#2,2,Single_Family_Density,NA
+102-1,TAHOE KEYS SA#1,1,Single_Family_Density,NA
+101-1,BIJOU MEADOWS SA#1,1,Single_Family_Density,NA
+104-1,HIGHLAND WOODS SA#1,1,Single_Family_Density,NA
+105-1,SIERRA TRACT SA#1,1,Single_Family_Density,NA
+111-2,TAHOE ISLAND SA#2,2,Single_Family_Density,NA
+111-1,TAHOE ISLAND SA#1,1,Single_Family_Density,NA
+112-1,GARDNER MOUNTAIN SA#1,1,Single_Family_Density,NA
+112-2,GARDNER MOUNTAIN,2,Single_Family_Density,NA
+114-2,BONANZA SA#2,2,Single_Family_Density,NA
+114-1,BONANZA SA#1,1,Single_Family_Density,NA
+114-3,BONANZA SA#3,3,Single_Family_Density,NA
+094-2,GLENWOOD,2,Single_Family_Density,NA
+051-1,TYROLIAN VILLAGE,1,Single_Family_Density,NA
+060-2,GENOA PEAK,2,Single_Family_Density,NA
+084-1,PALISADES,1,Single_Family_Density,NA
+100-1,TRUCKEE MARSH,1,Single_Family_Density,NA
+089-1,LAKESIDE PARK,1,Single_Family_Density,NA
+117-0,NA,0,Single_Family_Density,1 unit per parcel
+120-0,NA,0,Single_Family_Density,1 unit per parcel
+133-0,NA,0,Single_Family_Density,1 unit per parcel
+030-0,NA,0,Single_Family_Density,"NA"
+033-0,NA,0,Single_Family_Density,1 unit per parcel
+034-0,NA,0,Single_Family_Density,1 unit per parcel
+035-0,NA,0,Single_Family_Density,1 unit per parcel
+036-0,NA,0,Single_Family_Density,1 unit per parcel
+037-0,NA,0,Single_Family_Density,1 unit per parcel
+038-0,NA,0,Single_Family_Density,1 unit per parcel
+039-0,NA,0,Single_Family_Density,1 unit per parcel
+040-0,NA,0,Single_Family_Density,1 unit per parcel
+041-0,NA,0,Single_Family_Density,1 unit per parcel
+042-0,NA,0,Single_Family_Density,1 unit per parcel
+043-0,NA,0,Single_Family_Density,1 unit per parcel
+044-0,NA,0,Single_Family_Density,1 unit per parcel
+046-0,NA,0,Single_Family_Density,1 unit per parcel
+047-0,NA,0,Single_Family_Density,1 unit per parcel
+049-0,NA,0,Single_Family_Density,1 unit per parcel
+050-0,NA,0,Single_Family_Density,1 unit per parcel
+051-0,NA,0,Single_Family_Density,1 unit per parcel
+052-0,NA,0,Single_Family_Density,"NA"
+053-0,NA,0,Single_Family_Density,"NA"
+055-0,NA,0,Single_Family_Density,1 unit per parcel
+056-0,NA,0,Single_Family_Density,"NA"
+057-0,NA,0,Single_Family_Density,"NA"
+058-0,NA,0,Single_Family_Density,1 unit per parcel
+059-0,NA,0,Single_Family_Density,1 unit per parcel
+060-0,NA,0,Single_Family_Density,1 unit per parcel
+061-0,NA,0,Single_Family_Density,1 unit per parcel
+062-0,NA,0,Single_Family_Density,1 unit per parcel
+063-0,NA,0,Single_Family_Density,1 unit per parcel
+064-0,NA,0,Single_Family_Density,1 unit per parcel
+065-0,NA,0,Single_Family_Density,1 unit per parcel
+066-0,NA,0,Single_Family_Density,1 unit per parcel
+067-0,NA,0,Single_Family_Density,1 unit per parcel
+068-0,NA,0,Single_Family_Density,1 unit per parcel
+069-0,NA,0,Single_Family_Density,1 unit per parcel
+070B-0,NA,0,Single_Family_Density,1 unit per parcel
+072-0,NA,0,Single_Family_Density,1 unit per parcel
+073-0,NA,0,Single_Family_Density,1 unit per parcel
+074-0,NA,0,Single_Family_Density,1 unit per parcel
+075-0,NA,0,Single_Family_Density,"NA"
+077-0,NA,0,Single_Family_Density,1 unit per parcel
+078-0,NA,0,Single_Family_Density,1 unit per parcel
+079-0,NA,0,Single_Family_Density,1 unit per parcel
+080-0,NA,0,Single_Family_Density,1 unit per parcel
+081-0,NA,0,Single_Family_Density,1 unit per parcel
+082-0,NA,0,Single_Family_Density,1 unit per parcel
+083-0,NA,0,Single_Family_Density,1 unit per parcel
+084-0,NA,0,Single_Family_Density,1 unit per parcel
+085-0,NA,0,Single_Family_Density,1 unit per parcel
+086-0,NA,0,Single_Family_Density,"NA"
+087-0,NA,0,Single_Family_Density,"NA"
+088-0,NA,0,Single_Family_Density,1 unit per parcel
+089-0,NA,0,Single_Family_Density,1 unit per parcel
+090-0,NA,0,Single_Family_Density,1 unit per parcel
+092-0,NA,0,Single_Family_Density,1 unit per parcel
+093-0,NA,0,Single_Family_Density,1 unit per parcel
+094-0,NA,0,Single_Family_Density,1 unit per parcel
+095-0,NA,0,Single_Family_Density,1 unit per parcel
+096-0,NA,0,Single_Family_Density,1 unit per parcel
+097-0,NA,0,Single_Family_Density,1 unit per parcel
+099-0,NA,0,Single_Family_Density,1 unit per parcel
+100-0,NA,0,Single_Family_Density,1 unit per parcel
+101-0,NA,0,Single_Family_Density,1 unit per parcel
+102-0,NA,0,Single_Family_Density,1 unit per parcel
+103-0,NA,0,Single_Family_Density,1 unit per parcel
+104-0,NA,0,Single_Family_Density,1 unit per parcel
+105-0,NA,0,Single_Family_Density,1 unit per parcel
+106-0,NA,0,Single_Family_Density,1 unit per parcel
+107-0,NA,0,Single_Family_Density,1 unit per parcel
+108-0,NA,0,Single_Family_Density,1 unit per parcel
+109-0,NA,0,Single_Family_Density,"NA"
+111-0,NA,0,Single_Family_Density,1 unit per parcel
+112-0,NA,0,Single_Family_Density,1 unit per parcel
+114-0,NA,0,Single_Family_Density,1 unit per parcel
+115-0,NA,0,Single_Family_Density,1 unit per parcel
+116-0,NA,0,Single_Family_Density,"NA"
+118-0,NA,0,Single_Family_Density,1 unit per parcel
+119-0,NA,0,Single_Family_Density,1 unit per parcel
+121-0,NA,0,Single_Family_Density,"NA"
+122-0,NA,0,Single_Family_Density,1 unit per parcel
+123-0,NA,0,Single_Family_Density,1 unit per parcel
+124-0,NA,0,Single_Family_Density,1 unit per parcel
+126-0,NA,0,Single_Family_Density,1 unit per parcel
+127-0,NA,0,Single_Family_Density,1 unit per parcel
+128-0,NA,0,Single_Family_Density,"NA"
+129-0,NA,0,Single_Family_Density,1 unit per parcel
+130-0,NA,0,Single_Family_Density,1 unit per parcel
+131-0,NA,0,Single_Family_Density,1 unit per parcel
+132-0,NA,0,Single_Family_Density,1 unit per parcel
+134-0,NA,0,Single_Family_Density,1 unit per parcel
+135-0,NA,0,Single_Family_Density,1 unit per parcel
+137-0,NA,0,Single_Family_Density,1 unit per parcel
+138-0,NA,0,Single_Family_Density,1 unit per parcel
+139-0,NA,0,Single_Family_Density,"NA"
+140-0,NA,0,Single_Family_Density,"NA"
+141-0,NA,0,Single_Family_Density,1 unit per parcel
+142-0,NA,0,Single_Family_Density,"NA"
+143-0,NA,0,Single_Family_Density,"NA"
+144A-0,NA,0,Single_Family_Density,"NA"
+144B-0,NA,0,Single_Family_Density,"NA"
+145-0,NA,0,Single_Family_Density,1 unit per parcel
+146-0,NA,0,Single_Family_Density,"NA"
+147-0,NA,0,Single_Family_Density,1 unit per parcel
+148-0,NA,0,Single_Family_Density,1 unit per parcel
+149-0,NA,0,Single_Family_Density,1 unit per parcel
+150-0,NA,0,Single_Family_Density,"NA"
+151-0,NA,0,Single_Family_Density,1 unit per parcel
+152-0,NA,0,Single_Family_Density,"NA"
+153-0,NA,0,Single_Family_Density,"NA"
+154-0,NA,0,Single_Family_Density,1 unit per parcel
+175-0,NA,0,Single_Family_Density,1 unit per parcel
+070A-0,NA,0,Single_Family_Density,1 unit per parcel
+019-0,NA,0,Single_Family_Density,"NA"
+155-0,NA,0,Single_Family_Density,1 unit per parcel
+137-0,NA,0,Single_Family_Density,1 unit per parcel
+041-1,INCLINE VILLAGE #3,1,Multi_Family_Density,NA
+044-1,FAIRWAY,1,Multi_Family_Density,NA
+038-1,WOOD CREEK SA#1,1,Multi_Family_Density,NA
+035-1,CRYSTAL BAY CONDOMINIUMS SA#1,1,Multi_Family_Density,NA
+058-1,GLENBROOK,1,Multi_Family_Density,NA
+060-1,GENOA PEAK SA#1,1,Multi_Family_Density,NA
+061-1,LOGAN CREEK SA#1,1,Multi_Family_Density,NA
+063-1,LINCOLN,1,Multi_Family_Density,NA
+067-2,MARLA BAY/ZEPHYR HEIGHTS,2,Multi_Family_Density,NA
+067-1,MARLA BAY/ZEPHYR HEIGHTS,1,Multi_Family_Density,NA
+080-1,KINGSBURY DRAINAGE SA#1,1,Multi_Family_Density,NA
+073-1,LAKE VILLAGE SA#1,1,Multi_Family_Density,NA
+093-1,BIJOU,1,Multi_Family_Density,NA
+099-1,AL TAHOE SA#1,1,Multi_Family_Density,NA
+097-1,BIJOU PINES SA#1,1,Multi_Family_Density,NA
+175-1,CASCADE PROPERTIES SA#1,1,Multi_Family_Density,NA
+085-1,LAKE VIEW HEIGHTS SA#1,1,Multi_Family_Density,NA
+094-1,GLENWOOD SA#1,1,Multi_Family_Density,NA
+102-2,TAHOE KEYS SA#2,2,Multi_Family_Density,NA
+102-1,TAHOE KEYS SA#1,1,Multi_Family_Density,NA
+101-1,BIJOU MEADOWS SA#1,1,Multi_Family_Density,NA
+104-1,HIGHLAND WOODS SA#1,1,Multi_Family_Density,NA
+105-1,SIERRA TRACT SA#1,1,Multi_Family_Density,NA
+111-2,TAHOE ISLAND SA#2,2,Multi_Family_Density,NA
+111-1,TAHOE ISLAND SA#1,1,Multi_Family_Density,NA
+112-1,GARDNER MOUNTAIN SA#1,1,Multi_Family_Density,NA
+112-2,GARDNER MOUNTAIN,2,Multi_Family_Density,NA
+114-2,BONANZA SA#2,2,Multi_Family_Density,NA
+114-1,BONANZA SA#1,1,Multi_Family_Density,NA
+114-3,BONANZA SA#3,3,Multi_Family_Density,NA
+094-2,GLENWOOD,2,Multi_Family_Density,NA
+051-1,TYROLIAN VILLAGE,1,Multi_Family_Density,NA
+060-2,GENOA PEAK,2,Multi_Family_Density,NA
+084-1,PALISADES,1,Multi_Family_Density,NA
+100-1,TRUCKEE MARSH,1,Multi_Family_Density,NA
+089-1,LAKESIDE PARK,1,Multi_Family_Density,NA
+117-0,NA,0,Multi_Family_Density,0
+120-0,NA,0,Multi_Family_Density,0
+133-0,NA,0,Multi_Family_Density,0
+030-0,NA,0,Multi_Family_Density,0
+033-0,NA,0,Multi_Family_Density,0
+034-0,NA,0,Multi_Family_Density,0
+035-0,NA,0,Multi_Family_Density,4
+036-0,NA,0,Multi_Family_Density,0
+037-0,NA,0,Multi_Family_Density,0
+038-0,NA,0,Multi_Family_Density,0
+039-0,NA,0,Multi_Family_Density,0
+040-0,NA,0,Multi_Family_Density,0
+041-0,NA,0,Multi_Family_Density,8
+042-0,NA,0,Multi_Family_Density,0
+043-0,NA,0,Multi_Family_Density,0
+044-0,NA,0,Multi_Family_Density,15
+046-0,NA,0,Multi_Family_Density,15
+047-0,NA,0,Multi_Family_Density,0
+049-0,NA,0,Multi_Family_Density,0
+050-0,NA,0,Multi_Family_Density,15
+051-0,NA,0,Multi_Family_Density,0
+052-0,NA,0,Multi_Family_Density,0
+053-0,NA,0,Multi_Family_Density,0
+055-0,NA,0,Multi_Family_Density,0
+056-0,NA,0,Multi_Family_Density,0
+057-0,NA,0,Multi_Family_Density,0
+058-0,NA,0,Multi_Family_Density,0
+059-0,NA,0,Multi_Family_Density,0
+060-0,NA,0,Multi_Family_Density,0
+061-0,NA,0,Multi_Family_Density,0
+062-0,NA,0,Multi_Family_Density,0
+063-0,NA,0,Multi_Family_Density,0
+064-0,NA,0,Multi_Family_Density,0
+065-0,NA,0,Multi_Family_Density,0
+066-0,NA,0,Multi_Family_Density,0
+067-0,NA,0,Multi_Family_Density,0
+068-0,NA,0,Multi_Family_Density,0
+069-0,NA,0,Multi_Family_Density,0
+070B-0,NA,0,Multi_Family_Density,0
+072-0,NA,0,Multi_Family_Density,8
+073-0,NA,0,Multi_Family_Density,3
+074-0,NA,0,Multi_Family_Density,10
+075-0,NA,0,Multi_Family_Density,0
+077-0,NA,0,Multi_Family_Density,15
+078-0,NA,0,Multi_Family_Density,0
+079-0,NA,0,Multi_Family_Density,0
+080-0,NA,0,Multi_Family_Density,0
+081-0,NA,0,Multi_Family_Density,0
+082-0,NA,0,Multi_Family_Density,0
+083-0,NA,0,Multi_Family_Density,0
+084-0,NA,0,Multi_Family_Density,0
+085-0,NA,0,Multi_Family_Density,15
+086-0,NA,0,Multi_Family_Density,0
+087-0,NA,0,Multi_Family_Density,0
+088-0,NA,0,Multi_Family_Density,8
+089-0,NA,0,Multi_Family_Density,15
+090-0,NA,0,Multi_Family_Density,0
+092-0,NA,0,Multi_Family_Density,15
+093-0,NA,0,Multi_Family_Density,15
+094-0,NA,0,Multi_Family_Density,11
+095-0,NA,0,Multi_Family_Density,0
+096-0,NA,0,Multi_Family_Density,0
+097-0,NA,0,Multi_Family_Density,15
+099-0,NA,0,Multi_Family_Density,15
+100-0,NA,0,Multi_Family_Density,0
+101-0,NA,0,Multi_Family_Density,0
+102-0,NA,0,Multi_Family_Density,15
+103-0,NA,0,Multi_Family_Density,15
+104-0,NA,0,Multi_Family_Density,12
+105-0,NA,0,Multi_Family_Density,12
+106-0,NA,0,Multi_Family_Density,0
+107-0,NA,0,Multi_Family_Density,0
+108-0,NA,0,Multi_Family_Density,0
+109-0,NA,0,Multi_Family_Density,0
+111-0,NA,0,Multi_Family_Density,8
+112-0,NA,0,Multi_Family_Density,8
+114-0,NA,0,Multi_Family_Density,10
+115-0,NA,0,Multi_Family_Density,0
+116-0,NA,0,Multi_Family_Density,0
+118-0,NA,0,Multi_Family_Density,0
+119-0,NA,0,Multi_Family_Density,0
+121-0,NA,0,Multi_Family_Density,0
+122-0,NA,0,Multi_Family_Density,0
+123-0,NA,0,Multi_Family_Density,0
+124-0,NA,0,Multi_Family_Density,0
+126-0,NA,0,Multi_Family_Density,0
+127-0,NA,0,Multi_Family_Density,0
+128-0,NA,0,Multi_Family_Density,0
+129-0,NA,0,Multi_Family_Density,0
+130-0,NA,0,Multi_Family_Density,0
+131-0,NA,0,Multi_Family_Density,0
+132-0,NA,0,Multi_Family_Density,0
+134-0,NA,0,Multi_Family_Density,0
+135-0,NA,0,Multi_Family_Density,0
+137-0,NA,0,Multi_Family_Density,0
+138-0,NA,0,Multi_Family_Density,0
+139-0,NA,0,Multi_Family_Density,0
+140-0,NA,0,Multi_Family_Density,0
+141-0,NA,0,Multi_Family_Density,0
+142-0,NA,0,Multi_Family_Density,0
+143-0,NA,0,Multi_Family_Density,0
+144A-0,NA,0,Multi_Family_Density,0
+144B-0,NA,0,Multi_Family_Density,0
+145-0,NA,0,Multi_Family_Density,0
+146-0,NA,0,Multi_Family_Density,0
+147-0,NA,0,Multi_Family_Density,0
+148-0,NA,0,Multi_Family_Density,0
+149-0,NA,0,Multi_Family_Density,0
+150-0,NA,0,Multi_Family_Density,0
+151-0,NA,0,Multi_Family_Density,0
+152-0,NA,0,Multi_Family_Density,0
+153-0,NA,0,Multi_Family_Density,0
+154-0,NA,0,Multi_Family_Density,8
+175-0,NA,0,Multi_Family_Density,0
+070A-0,NA,0,Multi_Family_Density,0
+019-0,NA,0,Multi_Family_Density,0
+155-0,NA,0,Multi_Family_Density,8
+137-0,NA,0,Multi_Family_Density,0
+041-1,INCLINE VILLAGE #3,1,Tourist_Accommodation_Density,NA
+044-1,FAIRWAY,1,Tourist_Accommodation_Density,NA
+038-1,WOOD CREEK SA#1,1,Tourist_Accommodation_Density,NA
+035-1,CRYSTAL BAY CONDOMINIUMS SA#1,1,Tourist_Accommodation_Density,NA
+058-1,GLENBROOK,1,Tourist_Accommodation_Density,NA
+060-1,GENOA PEAK SA#1,1,Tourist_Accommodation_Density,NA
+061-1,LOGAN CREEK SA#1,1,Tourist_Accommodation_Density,NA
+063-1,LINCOLN,1,Tourist_Accommodation_Density,NA
+067-2,MARLA BAY/ZEPHYR HEIGHTS,2,Tourist_Accommodation_Density,NA
+067-1,MARLA BAY/ZEPHYR HEIGHTS,1,Tourist_Accommodation_Density,NA
+080-1,KINGSBURY DRAINAGE SA#1,1,Tourist_Accommodation_Density,NA
+073-1,LAKE VILLAGE SA#1,1,Tourist_Accommodation_Density,NA
+093-1,BIJOU,1,Tourist_Accommodation_Density,NA
+099-1,AL TAHOE SA#1,1,Tourist_Accommodation_Density,NA
+097-1,BIJOU PINES SA#1,1,Tourist_Accommodation_Density,NA
+175-1,CASCADE PROPERTIES SA#1,1,Tourist_Accommodation_Density,NA
+085-1,LAKE VIEW HEIGHTS SA#1,1,Tourist_Accommodation_Density,NA
+094-1,GLENWOOD SA#1,1,Tourist_Accommodation_Density,NA
+102-2,TAHOE KEYS SA#2,2,Tourist_Accommodation_Density,NA
+102-1,TAHOE KEYS SA#1,1,Tourist_Accommodation_Density,NA
+101-1,BIJOU MEADOWS SA#1,1,Tourist_Accommodation_Density,NA
+104-1,HIGHLAND WOODS SA#1,1,Tourist_Accommodation_Density,NA
+105-1,SIERRA TRACT SA#1,1,Tourist_Accommodation_Density,NA
+111-2,TAHOE ISLAND SA#2,2,Tourist_Accommodation_Density,NA
+111-1,TAHOE ISLAND SA#1,1,Tourist_Accommodation_Density,NA
+112-1,GARDNER MOUNTAIN SA#1,1,Tourist_Accommodation_Density,NA
+112-2,GARDNER MOUNTAIN,2,Tourist_Accommodation_Density,NA
+114-2,BONANZA SA#2,2,Tourist_Accommodation_Density,NA
+114-1,BONANZA SA#1,1,Tourist_Accommodation_Density,NA
+114-3,BONANZA SA#3,3,Tourist_Accommodation_Density,NA
+094-2,GLENWOOD,2,Tourist_Accommodation_Density,NA
+051-1,TYROLIAN VILLAGE,1,Tourist_Accommodation_Density,NA
+060-2,GENOA PEAK,2,Tourist_Accommodation_Density,NA
+084-1,PALISADES,1,Tourist_Accommodation_Density,NA
+100-1,TRUCKEE MARSH,1,Tourist_Accommodation_Density,NA
+089-1,LAKESIDE PARK,1,Tourist_Accommodation_Density,NA
+117-0,NA,0,Tourist_Accommodation_Density,"NA"
+120-0,NA,0,Tourist_Accommodation_Density,"NA"
+133-0,NA,0,Tourist_Accommodation_Density,"NA"
+030-0,NA,0,Tourist_Accommodation_Density,"NA"
+033-0,NA,0,Tourist_Accommodation_Density,"NA"
+034-0,NA,0,Tourist_Accommodation_Density,"NA"
+035-0,NA,0,Tourist_Accommodation_Density,"NA"
+036-0,NA,0,Tourist_Accommodation_Density,"NA"
+037-0,NA,0,Tourist_Accommodation_Density,"NA"
+038-0,NA,0,Tourist_Accommodation_Density,"NA"
+039-0,NA,0,Tourist_Accommodation_Density,"NA"
+040-0,NA,0,Tourist_Accommodation_Density,"NA"
+041-0,NA,0,Tourist_Accommodation_Density,"NA"
+042-0,NA,0,Tourist_Accommodation_Density,"NA"
+043-0,NA,0,Tourist_Accommodation_Density,"NA"
+044-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+046-0,NA,0,Tourist_Accommodation_Density,"NA"
+047-0,NA,0,Tourist_Accommodation_Density,"NA"
+049-0,NA,0,Tourist_Accommodation_Density,"NA"
+050-0,NA,0,Tourist_Accommodation_Density,"NA"
+051-0,NA,0,Tourist_Accommodation_Density,"NA"
+052-0,NA,0,Tourist_Accommodation_Density,"NA"
+053-0,NA,0,Tourist_Accommodation_Density,"NA"
+055-0,NA,0,Tourist_Accommodation_Density,"NA"
+056-0,NA,0,Tourist_Accommodation_Density,"NA"
+057-0,NA,0,Tourist_Accommodation_Density,"NA"
+058-0,NA,0,Tourist_Accommodation_Density,"NA"
+059-0,NA,0,Tourist_Accommodation_Density,"NA"
+060-0,NA,0,Tourist_Accommodation_Density,"NA"
+061-0,NA,0,Tourist_Accommodation_Density,"NA"
+062-0,NA,0,Tourist_Accommodation_Density,"NA"
+063-0,NA,0,Tourist_Accommodation_Density,"NA"
+064-0,NA,0,Tourist_Accommodation_Density,"NA"
+065-0,NA,0,Tourist_Accommodation_Density,"NA"
+066-0,NA,0,Tourist_Accommodation_Density,20 units per acre
+067-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+068-0,NA,0,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+069-0,NA,0,Tourist_Accommodation_Density,"NA"
+070B-0,NA,0,Tourist_Accommodation_Density,"NA"
+072-0,NA,0,Tourist_Accommodation_Density,"NA"
+073-0,NA,0,Tourist_Accommodation_Density,"NA"
+074-0,NA,0,Tourist_Accommodation_Density,"NA"
+075-0,NA,0,Tourist_Accommodation_Density,"NA"
+077-0,NA,0,Tourist_Accommodation_Density,"NA"
+078-0,NA,0,Tourist_Accommodation_Density,"NA"
+079-0,NA,0,Tourist_Accommodation_Density,"NA"
+080-0,NA,0,Tourist_Accommodation_Density,"NA"
+081-0,NA,0,Tourist_Accommodation_Density,"NA"
+082-0,NA,0,Tourist_Accommodation_Density,"NA"
+083-0,NA,0,Tourist_Accommodation_Density,"NA"
+084-0,NA,0,Tourist_Accommodation_Density,"NA"
+085-0,NA,0,Tourist_Accommodation_Density,"NA"
+086-0,NA,0,Tourist_Accommodation_Density,"NA"
+087-0,NA,0,Tourist_Accommodation_Density,"NA"
+088-0,NA,0,Tourist_Accommodation_Density,"NA"
+089-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+090-0,NA,0,Tourist_Accommodation_Density,"NA"
+092-0,NA,0,Tourist_Accommodation_Density,"NA"
+093-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+094-0,NA,0,Tourist_Accommodation_Density,"NA"
+095-0,NA,0,Tourist_Accommodation_Density,"NA"
+096-0,NA,0,Tourist_Accommodation_Density,"NA"
+097-0,NA,0,Tourist_Accommodation_Density,"NA"
+099-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+100-0,NA,0,Tourist_Accommodation_Density,"NA"
+101-0,NA,0,Tourist_Accommodation_Density,"NA"
+102-0,NA,0,Tourist_Accommodation_Density,"NA"
+103-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+104-0,NA,0,Tourist_Accommodation_Density,"NA"
+105-0,NA,0,Tourist_Accommodation_Density,"NA"
+106-0,NA,0,Tourist_Accommodation_Density,"NA"
+107-0,NA,0,Tourist_Accommodation_Density,"NA"
+108-0,NA,0,Tourist_Accommodation_Density,"NA"
+109-0,NA,0,Tourist_Accommodation_Density,"NA"
+111-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+112-0,NA,0,Tourist_Accommodation_Density,"NA"
+114-0,NA,0,Tourist_Accommodation_Density,40 units per acre
+115-0,NA,0,Tourist_Accommodation_Density,"NA"
+116-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+118-0,NA,0,Tourist_Accommodation_Density,"NA"
+119-0,NA,0,Tourist_Accommodation_Density,"NA"
+121-0,NA,0,Tourist_Accommodation_Density,"NA"
+122-0,NA,0,Tourist_Accommodation_Density,"NA"
+123-0,NA,0,Tourist_Accommodation_Density,"NA"
+124-0,NA,0,Tourist_Accommodation_Density,"NA"
+126-0,NA,0,Tourist_Accommodation_Density,"NA"
+127-0,NA,0,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+128-0,NA,0,Tourist_Accommodation_Density,"NA"
+129-0,NA,0,Tourist_Accommodation_Density,"NA"
+130-0,NA,0,Tourist_Accommodation_Density,"NA"
+131-0,NA,0,Tourist_Accommodation_Density,"NA"
+132-0,NA,0,Tourist_Accommodation_Density,"NA"
+134-0,NA,0,Tourist_Accommodation_Density,"NA"
+135-0,NA,0,Tourist_Accommodation_Density,"NA"
+137-0,NA,0,Tourist_Accommodation_Density,"NA"
+138-0,NA,0,Tourist_Accommodation_Density,"NA"
+139-0,NA,0,Tourist_Accommodation_Density,"NA"
+140-0,NA,0,Tourist_Accommodation_Density,"NA"
+141-0,NA,0,Tourist_Accommodation_Density,"NA"
+142-0,NA,0,Tourist_Accommodation_Density,15 units per acre
+143-0,NA,0,Tourist_Accommodation_Density,"NA"
+144A-0,NA,0,Tourist_Accommodation_Density,"NA"
+144B-0,NA,0,Tourist_Accommodation_Density,15 units per acre
+145-0,NA,0,Tourist_Accommodation_Density,"NA"
+146-0,NA,0,Tourist_Accommodation_Density,"NA"
+147-0,NA,0,Tourist_Accommodation_Density,"NA"
+148-0,NA,0,Tourist_Accommodation_Density,"NA"
+149-0,NA,0,Tourist_Accommodation_Density,"NA"
+150-0,NA,0,Tourist_Accommodation_Density,20 units per acre
+151-0,NA,0,Tourist_Accommodation_Density,"NA"
+152-0,NA,0,Tourist_Accommodation_Density,"NA"
+153-0,NA,0,Tourist_Accommodation_Density,"NA"
+154-0,NA,0,Tourist_Accommodation_Density,"NA"
+175-0,NA,0,Tourist_Accommodation_Density,"NA"
+070A-0,NA,0,Tourist_Accommodation_Density,40 units per acre if less than 10% have kitchens
+019-0,NA,0,Tourist_Accommodation_Density,"NA"
+155-0,NA,0,Tourist_Accommodation_Density,20 units per acre if less than 10% have kitchens
+137-0,NA,0,Tourist_Accommodation_Density,"NA"
+041-1,INCLINE VILLAGE #3,1,Bed_Breakfast_Density,NA
+044-1,FAIRWAY,1,Bed_Breakfast_Density,NA
+038-1,WOOD CREEK SA#1,1,Bed_Breakfast_Density,NA
+035-1,CRYSTAL BAY CONDOMINIUMS SA#1,1,Bed_Breakfast_Density,NA
+058-1,GLENBROOK,1,Bed_Breakfast_Density,NA
+060-1,GENOA PEAK SA#1,1,Bed_Breakfast_Density,NA
+061-1,LOGAN CREEK SA#1,1,Bed_Breakfast_Density,NA
+063-1,LINCOLN,1,Bed_Breakfast_Density,NA
+067-2,MARLA BAY/ZEPHYR HEIGHTS,2,Bed_Breakfast_Density,NA
+067-1,MARLA BAY/ZEPHYR HEIGHTS,1,Bed_Breakfast_Density,NA
+080-1,KINGSBURY DRAINAGE SA#1,1,Bed_Breakfast_Density,NA
+073-1,LAKE VILLAGE SA#1,1,Bed_Breakfast_Density,NA
+093-1,BIJOU,1,Bed_Breakfast_Density,NA
+099-1,AL TAHOE SA#1,1,Bed_Breakfast_Density,NA
+097-1,BIJOU PINES SA#1,1,Bed_Breakfast_Density,NA
+175-1,CASCADE PROPERTIES SA#1,1,Bed_Breakfast_Density,NA
+085-1,LAKE VIEW HEIGHTS SA#1,1,Bed_Breakfast_Density,NA
+094-1,GLENWOOD SA#1,1,Bed_Breakfast_Density,NA
+102-2,TAHOE KEYS SA#2,2,Bed_Breakfast_Density,NA
+102-1,TAHOE KEYS SA#1,1,Bed_Breakfast_Density,NA
+101-1,BIJOU MEADOWS SA#1,1,Bed_Breakfast_Density,NA
+104-1,HIGHLAND WOODS SA#1,1,Bed_Breakfast_Density,NA
+105-1,SIERRA TRACT SA#1,1,Bed_Breakfast_Density,NA
+111-2,TAHOE ISLAND SA#2,2,Bed_Breakfast_Density,NA
+111-1,TAHOE ISLAND SA#1,1,Bed_Breakfast_Density,NA
+112-1,GARDNER MOUNTAIN SA#1,1,Bed_Breakfast_Density,NA
+112-2,GARDNER MOUNTAIN,2,Bed_Breakfast_Density,NA
+114-2,BONANZA SA#2,2,Bed_Breakfast_Density,NA
+114-1,BONANZA SA#1,1,Bed_Breakfast_Density,NA
+114-3,BONANZA SA#3,3,Bed_Breakfast_Density,NA
+094-2,GLENWOOD,2,Bed_Breakfast_Density,NA
+051-1,TYROLIAN VILLAGE,1,Bed_Breakfast_Density,NA
+060-2,GENOA PEAK,2,Bed_Breakfast_Density,NA
+084-1,PALISADES,1,Bed_Breakfast_Density,NA
+100-1,TRUCKEE MARSH,1,Bed_Breakfast_Density,NA
+089-1,LAKESIDE PARK,1,Bed_Breakfast_Density,NA
+117-0,NA,0,Bed_Breakfast_Density,"NA"
+120-0,NA,0,Bed_Breakfast_Density,"NA"
+133-0,NA,0,Bed_Breakfast_Density,"NA"
+030-0,NA,0,Bed_Breakfast_Density,"NA"
+033-0,NA,0,Bed_Breakfast_Density,"NA"
+034-0,NA,0,Bed_Breakfast_Density,"NA"
+035-0,NA,0,Bed_Breakfast_Density,"NA"
+036-0,NA,0,Bed_Breakfast_Density,"NA"
+037-0,NA,0,Bed_Breakfast_Density,5 units per parcel
+038-0,NA,0,Bed_Breakfast_Density,5 units per parcel
+039-0,NA,0,Bed_Breakfast_Density,"NA"
+040-0,NA,0,Bed_Breakfast_Density,"NA"
+041-0,NA,0,Bed_Breakfast_Density,"NA"
+042-0,NA,0,Bed_Breakfast_Density,"NA"
+043-0,NA,0,Bed_Breakfast_Density,"NA"
+044-0,NA,0,Bed_Breakfast_Density,"NA"
+046-0,NA,0,Bed_Breakfast_Density,"NA"
+047-0,NA,0,Bed_Breakfast_Density,"NA"
+049-0,NA,0,Bed_Breakfast_Density,5 units per parcel
+050-0,NA,0,Bed_Breakfast_Density,"NA"
+051-0,NA,0,Bed_Breakfast_Density,10 units per acre
+052-0,NA,0,Bed_Breakfast_Density,"NA"
+053-0,NA,0,Bed_Breakfast_Density,"NA"
+055-0,NA,0,Bed_Breakfast_Density,"NA"
+056-0,NA,0,Bed_Breakfast_Density,"NA"
+057-0,NA,0,Bed_Breakfast_Density,"NA"
+058-0,NA,0,Bed_Breakfast_Density,"NA"
+059-0,NA,0,Bed_Breakfast_Density,"NA"
+060-0,NA,0,Bed_Breakfast_Density,"NA"
+061-0,NA,0,Bed_Breakfast_Density,"NA"
+062-0,NA,0,Bed_Breakfast_Density,"NA"
+063-0,NA,0,Bed_Breakfast_Density,"NA"
+064-0,NA,0,Bed_Breakfast_Density,"NA"
+065-0,NA,0,Bed_Breakfast_Density,"NA"
+066-0,NA,0,Bed_Breakfast_Density,10 units per parcel
+067-0,NA,0,Bed_Breakfast_Density,"NA"
+068-0,NA,0,Bed_Breakfast_Density,"NA"
+069-0,NA,0,Bed_Breakfast_Density,"NA"
+070B-0,NA,0,Bed_Breakfast_Density,"NA"
+072-0,NA,0,Bed_Breakfast_Density,"NA"
+073-0,NA,0,Bed_Breakfast_Density,"NA"
+074-0,NA,0,Bed_Breakfast_Density,"NA"
+075-0,NA,0,Bed_Breakfast_Density,"NA"
+077-0,NA,0,Bed_Breakfast_Density,"NA"
+078-0,NA,0,Bed_Breakfast_Density,"NA"
+079-0,NA,0,Bed_Breakfast_Density,"NA"
+080-0,NA,0,Bed_Breakfast_Density,"NA"
+081-0,NA,0,Bed_Breakfast_Density,"NA"
+082-0,NA,0,Bed_Breakfast_Density,"NA"
+083-0,NA,0,Bed_Breakfast_Density,"NA"
+084-0,NA,0,Bed_Breakfast_Density,"NA"
+085-0,NA,0,Bed_Breakfast_Density,"NA"
+086-0,NA,0,Bed_Breakfast_Density,"NA"
+087-0,NA,0,Bed_Breakfast_Density,"NA"
+088-0,NA,0,Bed_Breakfast_Density,"NA"
+089-0,NA,0,Bed_Breakfast_Density,10 units per acre
+090-0,NA,0,Bed_Breakfast_Density,"NA"
+092-0,NA,0,Bed_Breakfast_Density,"NA"
+093-0,NA,0,Bed_Breakfast_Density,10 units per acre
+094-0,NA,0,Bed_Breakfast_Density,"NA"
+095-0,NA,0,Bed_Breakfast_Density,"NA"
+096-0,NA,0,Bed_Breakfast_Density,"NA"
+097-0,NA,0,Bed_Breakfast_Density,"NA"
+099-0,NA,0,Bed_Breakfast_Density,10 units per acre
+100-0,NA,0,Bed_Breakfast_Density,"NA"
+101-0,NA,0,Bed_Breakfast_Density,"NA"
+102-0,NA,0,Bed_Breakfast_Density,"NA"
+103-0,NA,0,Bed_Breakfast_Density,10 units per acre
+104-0,NA,0,Bed_Breakfast_Density,"NA"
+105-0,NA,0,Bed_Breakfast_Density,"NA"
+106-0,NA,0,Bed_Breakfast_Density,"NA"
+107-0,NA,0,Bed_Breakfast_Density,"NA"
+108-0,NA,0,Bed_Breakfast_Density,"NA"
+109-0,NA,0,Bed_Breakfast_Density,"NA"
+111-0,NA,0,Bed_Breakfast_Density,10 units per acre
+112-0,NA,0,Bed_Breakfast_Density,10 units per acre
+114-0,NA,0,Bed_Breakfast_Density,10 units per acre
+115-0,NA,0,Bed_Breakfast_Density,"NA"
+116-0,NA,0,Bed_Breakfast_Density,"NA"
+118-0,NA,0,Bed_Breakfast_Density,Na
+119-0,NA,0,Bed_Breakfast_Density,"NA"
+121-0,NA,0,Bed_Breakfast_Density,"NA"
+122-0,NA,0,Bed_Breakfast_Density,"NA"
+123-0,NA,0,Bed_Breakfast_Density,"NA"
+124-0,NA,0,Bed_Breakfast_Density,"NA"
+126-0,NA,0,Bed_Breakfast_Density,"NA"
+127-0,NA,0,Bed_Breakfast_Density,"NA"
+128-0,NA,0,Bed_Breakfast_Density,"NA"
+129-0,NA,0,Bed_Breakfast_Density,"NA"
+130-0,NA,0,Bed_Breakfast_Density,"NA"
+131-0,NA,0,Bed_Breakfast_Density,"NA"
+132-0,NA,0,Bed_Breakfast_Density,"NA"
+134-0,NA,0,Bed_Breakfast_Density,"NA"
+135-0,NA,0,Bed_Breakfast_Density,"NA"
+137-0,NA,0,Bed_Breakfast_Density,"NA"
+138-0,NA,0,Bed_Breakfast_Density,"NA"
+139-0,NA,0,Bed_Breakfast_Density,"NA"
+140-0,NA,0,Bed_Breakfast_Density,"NA"
+141-0,NA,0,Bed_Breakfast_Density,"NA"
+142-0,NA,0,Bed_Breakfast_Density,"NA"
+143-0,NA,0,Bed_Breakfast_Density,"NA"
+144A-0,NA,0,Bed_Breakfast_Density,"NA"
+144B-0,NA,0,Bed_Breakfast_Density,"NA"
+145-0,NA,0,Bed_Breakfast_Density,"NA"
+146-0,NA,0,Bed_Breakfast_Density,"NA"
+147-0,NA,0,Bed_Breakfast_Density,"NA"
+148-0,NA,0,Bed_Breakfast_Density,"NA"
+149-0,NA,0,Bed_Breakfast_Density,"NA"
+150-0,NA,0,Bed_Breakfast_Density,"NA"
+151-0,NA,0,Bed_Breakfast_Density,"NA"
+152-0,NA,0,Bed_Breakfast_Density,"NA"
+153-0,NA,0,Bed_Breakfast_Density,"NA"
+154-0,NA,0,Bed_Breakfast_Density,8 units per acre
+175-0,NA,0,Bed_Breakfast_Density,"NA"
+070A-0,NA,0,Bed_Breakfast_Density,10 units per acre
+019-0,NA,0,Bed_Breakfast_Density,"NA"
+155-0,NA,0,Bed_Breakfast_Density,10 units per acre
+137-0,NA,0,Bed_Breakfast_Density,"NA"
+041-1,INCLINE VILLAGE #3,1,Time_Share_Density,NA
+044-1,FAIRWAY,1,Time_Share_Density,NA
+038-1,WOOD CREEK SA#1,1,Time_Share_Density,NA
+035-1,CRYSTAL BAY CONDOMINIUMS SA#1,1,Time_Share_Density,NA
+058-1,GLENBROOK,1,Time_Share_Density,NA
+060-1,GENOA PEAK SA#1,1,Time_Share_Density,NA
+061-1,LOGAN CREEK SA#1,1,Time_Share_Density,NA
+063-1,LINCOLN,1,Time_Share_Density,NA
+067-2,MARLA BAY/ZEPHYR HEIGHTS,2,Time_Share_Density,NA
+067-1,MARLA BAY/ZEPHYR HEIGHTS,1,Time_Share_Density,NA
+080-1,KINGSBURY DRAINAGE SA#1,1,Time_Share_Density,NA
+073-1,LAKE VILLAGE SA#1,1,Time_Share_Density,NA
+093-1,BIJOU,1,Time_Share_Density,NA
+099-1,AL TAHOE SA#1,1,Time_Share_Density,NA
+097-1,BIJOU PINES SA#1,1,Time_Share_Density,NA
+175-1,CASCADE PROPERTIES SA#1,1,Time_Share_Density,NA
+085-1,LAKE VIEW HEIGHTS SA#1,1,Time_Share_Density,NA
+094-1,GLENWOOD SA#1,1,Time_Share_Density,NA
+102-2,TAHOE KEYS SA#2,2,Time_Share_Density,NA
+102-1,TAHOE KEYS SA#1,1,Time_Share_Density,NA
+101-1,BIJOU MEADOWS SA#1,1,Time_Share_Density,NA
+104-1,HIGHLAND WOODS SA#1,1,Time_Share_Density,NA
+105-1,SIERRA TRACT SA#1,1,Time_Share_Density,NA
+111-2,TAHOE ISLAND SA#2,2,Time_Share_Density,NA
+111-1,TAHOE ISLAND SA#1,1,Time_Share_Density,NA
+112-1,GARDNER MOUNTAIN SA#1,1,Time_Share_Density,NA
+112-2,GARDNER MOUNTAIN,2,Time_Share_Density,NA
+114-2,BONANZA SA#2,2,Time_Share_Density,NA
+114-1,BONANZA SA#1,1,Time_Share_Density,NA
+114-3,BONANZA SA#3,3,Time_Share_Density,NA
+094-2,GLENWOOD,2,Time_Share_Density,NA
+051-1,TYROLIAN VILLAGE,1,Time_Share_Density,NA
+060-2,GENOA PEAK,2,Time_Share_Density,NA
+084-1,PALISADES,1,Time_Share_Density,NA
+100-1,TRUCKEE MARSH,1,Time_Share_Density,NA
+089-1,LAKESIDE PARK,1,Time_Share_Density,NA
+117-0,NA,0,Time_Share_Density,"NA"
+120-0,NA,0,Time_Share_Density,"NA"
+133-0,NA,0,Time_Share_Density,"NA"
+030-0,NA,0,Time_Share_Density,"NA"
+033-0,NA,0,Time_Share_Density,"NA"
+034-0,NA,0,Time_Share_Density,"NA"
+035-0,NA,0,Time_Share_Density,"NA"
+036-0,NA,0,Time_Share_Density,"NA"
+037-0,NA,0,Time_Share_Density,"NA"
+038-0,NA,0,Time_Share_Density,"NA"
+039-0,NA,0,Time_Share_Density,"NA"
+040-0,NA,0,Time_Share_Density,"NA"
+041-0,NA,0,Time_Share_Density,"NA"
+042-0,NA,0,Time_Share_Density,"NA"
+043-0,NA,0,Time_Share_Density,"NA"
+044-0,NA,0,Time_Share_Density,40 units per acre if less than 10% have kitchens
+046-0,NA,0,Time_Share_Density,15 units per acre
+047-0,NA,0,Time_Share_Density,"NA"
+049-0,NA,0,Time_Share_Density,"NA"
+050-0,NA,0,Time_Share_Density,"NA"
+051-0,NA,0,Time_Share_Density,15 units per acre
+052-0,NA,0,Time_Share_Density,"NA"
+053-0,NA,0,Time_Share_Density,"NA"
+055-0,NA,0,Time_Share_Density,"NA"
+056-0,NA,0,Time_Share_Density,"NA"
+057-0,NA,0,Time_Share_Density,"NA"
+058-0,NA,0,Time_Share_Density,"NA"
+059-0,NA,0,Time_Share_Density,"NA"
+060-0,NA,0,Time_Share_Density,"NA"
+061-0,NA,0,Time_Share_Density,"NA"
+062-0,NA,0,Time_Share_Density,"NA"
+063-0,NA,0,Time_Share_Density,"NA"
+064-0,NA,0,Time_Share_Density,"NA"
+065-0,NA,0,Time_Share_Density,"NA"
+066-0,NA,0,Time_Share_Density,20 units per acre
+067-0,NA,0,Time_Share_Density,"NA"
+068-0,NA,0,Time_Share_Density,"NA"
+069-0,NA,0,Time_Share_Density,"NA"
+070B-0,NA,0,Time_Share_Density,"NA"
+072-0,NA,0,Time_Share_Density,8 units per acre
+073-0,NA,0,Time_Share_Density,"NA"
+074-0,NA,0,Time_Share_Density,"NA"
+075-0,NA,0,Time_Share_Density,"NA"
+077-0,NA,0,Time_Share_Density,"NA"
+078-0,NA,0,Time_Share_Density,"NA"
+079-0,NA,0,Time_Share_Density,"NA"
+080-0,NA,0,Time_Share_Density,"NA"
+081-0,NA,0,Time_Share_Density,"NA"
+082-0,NA,0,Time_Share_Density,"NA"
+083-0,NA,0,Time_Share_Density,"NA"
+084-0,NA,0,Time_Share_Density,"NA"
+085-0,NA,0,Time_Share_Density,15 units per acre
+086-0,NA,0,Time_Share_Density,"NA"
+087-0,NA,0,Time_Share_Density,"NA"
+088-0,NA,0,Time_Share_Density,"NA"
+089-0,NA,0,Time_Share_Density,"NA"
+090-0,NA,0,Time_Share_Density,"NA"
+092-0,NA,0,Time_Share_Density,"NA"
+093-0,NA,0,Time_Share_Density,15 units per acre
+094-0,NA,0,Time_Share_Density,"NA"
+095-0,NA,0,Time_Share_Density,"NA"
+096-0,NA,0,Time_Share_Density,"NA"
+097-0,NA,0,Time_Share_Density,"NA"
+099-0,NA,0,Time_Share_Density,"NA"
+100-0,NA,0,Time_Share_Density,"NA"
+101-0,NA,0,Time_Share_Density,"NA"
+102-0,NA,0,Time_Share_Density,"NA"
+103-0,NA,0,Time_Share_Density,40 units per acre if less than 10% have kitchens
+104-0,NA,0,Time_Share_Density,"NA"
+105-0,NA,0,Time_Share_Density,"NA"
+106-0,NA,0,Time_Share_Density,"NA"
+107-0,NA,0,Time_Share_Density,"NA"
+108-0,NA,0,Time_Share_Density,"NA"
+109-0,NA,0,Time_Share_Density,"NA"
+111-0,NA,0,Time_Share_Density,"NA"
+112-0,NA,0,Time_Share_Density,"NA"
+114-0,NA,0,Time_Share_Density,"NA"
+115-0,NA,0,Time_Share_Density,"NA"
+116-0,NA,0,Time_Share_Density,"NA"
+118-0,NA,0,Time_Share_Density,"NA"
+119-0,NA,0,Time_Share_Density,"NA"
+121-0,NA,0,Time_Share_Density,"NA"
+122-0,NA,0,Time_Share_Density,"NA"
+123-0,NA,0,Time_Share_Density,"NA"
+124-0,NA,0,Time_Share_Density,"NA"
+126-0,NA,0,Time_Share_Density,"NA"
+127-0,NA,0,Time_Share_Density,"NA"
+128-0,NA,0,Time_Share_Density,"NA"
+129-0,NA,0,Time_Share_Density,"NA"
+130-0,NA,0,Time_Share_Density,"NA"
+131-0,NA,0,Time_Share_Density,"NA"
+132-0,NA,0,Time_Share_Density,"NA"
+134-0,NA,0,Time_Share_Density,"NA"
+135-0,NA,0,Time_Share_Density,"NA"
+137-0,NA,0,Time_Share_Density,"NA"
+138-0,NA,0,Time_Share_Density,"NA"
+139-0,NA,0,Time_Share_Density,"NA"
+140-0,NA,0,Time_Share_Density,"NA"
+141-0,NA,0,Time_Share_Density,"NA"
+142-0,NA,0,Time_Share_Density,"NA"
+143-0,NA,0,Time_Share_Density,"NA"
+144A-0,NA,0,Time_Share_Density,"NA"
+144B-0,NA,0,Time_Share_Density,"NA"
+145-0,NA,0,Time_Share_Density,"NA"
+146-0,NA,0,Time_Share_Density,"NA"
+147-0,NA,0,Time_Share_Density,"NA"
+148-0,NA,0,Time_Share_Density,"NA"
+149-0,NA,0,Time_Share_Density,"NA"
+150-0,NA,0,Time_Share_Density,"NA"
+151-0,NA,0,Time_Share_Density,"NA"
+152-0,NA,0,Time_Share_Density,"NA"
+153-0,NA,0,Time_Share_Density,"NA"
+154-0,NA,0,Time_Share_Density,"NA"
+175-0,NA,0,Time_Share_Density,"NA"
+070A-0,NA,0,Time_Share_Density,40 units per acre if less than 10% have kitchens
+019-0,NA,0,Time_Share_Density,"NA"
+155-0,NA,0,Time_Share_Density,20 units per acre if less than 10% have kitchens
+137-0,NA,0,Time_Share_Density,"NA"
